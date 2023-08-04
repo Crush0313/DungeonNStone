@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq.Expressions;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace AFPC {
@@ -14,21 +15,18 @@ namespace AFPC {
         [Header("Inputs")]
         public Vector3 movementInputValues;
         public bool runningInputValue;
+        public bool runningCancelInputValue;
         public bool jumpingInputValue;
 
         [Header("Acceleration")]
-        public float referenceAcceleration = 2.66f;
-        float currentAcceleration = 2.5f;
-        float movementSmoothing = 0.3f;
-        Vector3 vector3_Reference;
-        Vector3 vector3_Target;
-        Vector3 delta;
         bool isMovementAvailable = true;
-        bool releaseAcceleration = true;
 
         [Header("Running")]
         public float runningAcceleration = 5.32f;
         bool isRunningAvaiable = true;
+        public float applySpeed;
+        public float walkSpeed;
+        public Vector3 _velocity;
 
         [Header("Endurance")]
         public float referenceEndurance = 20.0f;
@@ -38,19 +36,15 @@ namespace AFPC {
         public float jumpForce = 7.5f;
         bool isJumpingAvailable = true;
         bool isAirControl = true;
-        Vector3 groungCheckPosition;
-        bool isLandingActionPerformed;
-        UnityAction landingAction;
 	
         [Header("Physics")]
         public bool isGeneratePhysicMaterial = true;
-        public float mass = 70.0f;
+        public CapsuleCollider collider;
         public float drag = 3.0f;
-	    [Tooltip ("For Initialize()")] public float height = 1.6f;
 
         [Header("Looking for ground")]
         public LayerMask groundMask = 1;
-        bool isGrounded;
+        public bool isGrounded;
 
         [Header("References")]
         public Rigidbody rb;
@@ -61,9 +55,8 @@ namespace AFPC {
         /// Initialize the movement. Generate physic material if needed. Prepare the rigidbody.
         public virtual void Initialize () {
             rb.freezeRotation = true;
-            rb.mass = mass;
             rb.drag = drag;
-            cc.height = height;
+            applySpeed = walkSpeed;
 
             if (isGeneratePhysicMaterial) {
                 //물리 머테리얼 생성
@@ -132,13 +125,6 @@ namespace AFPC {
                 if (isDebugLog) Debug.Log(rb.gameObject.name + ": Ban Air Control");
             }
 
-            /// Perform an action when the character was landed.
-            public void AssignLandingAction (UnityAction action) {
-                landingAction = action;
-            }
-            public void ClearLandingAction () {
-                landingAction = null;
-            }
 
             /// Current endurance value.
             public float GetEnduranceValue () {
@@ -149,6 +135,7 @@ namespace AFPC {
                 return isGrounded;
             }
 
+
         /// Jumping state. Better use it in Update.
         public virtual void Jumping()
         {
@@ -158,84 +145,69 @@ namespace AFPC {
             {
                 if (jumpingInputValue) //점프 누르면
                 { //velocity 조절로 점프
-                    rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+                    rb.velocity = rb.transform.up * jumpForce; ;
                 }
             }
         }
 
-        /// Physical movement. Better use it in FixedUpdate.
-        public virtual void Accelerate () {
-            LookingForGround ();
-            MoveTorwardsAcceleration ();
+
+
+        //이동
+        public void Move()
+        {
+            IsGround();
 
             if (!isMovementAvailable) return;
             if (!rb) return;
-            if (System.Math.Abs(movementInputValues.x) < epsilon & System.Math.Abs(movementInputValues.y) < epsilon) return;
-            if (!isAirControl) {
+            if (!isAirControl)
+            {
                 if (!isGrounded) return; //에어컨트롤 비활성화에 공중상태
             }
 
-            //속도에 따라 움직임 보정방법 선택
-            if (rb.velocity.magnitude > 1.0f) { //벡터 크기
-                rb.interpolation = RigidbodyInterpolation.Extrapolate;
-            }
-            else {
-                rb.interpolation = RigidbodyInterpolation.Interpolate;
-            }
-
-            delta = new Vector3 (movementInputValues.x, 0, movementInputValues.y);
-            delta = Vector3.ClampMagnitude (delta, 1);
-            delta = rb.transform.TransformDirection (delta) * currentAcceleration;
-
-            vector3_Target = new Vector3 (delta.x, rb.velocity.y, delta.z);
-            rb.velocity = Vector3.SmoothDamp (rb.velocity, vector3_Target, ref vector3_Reference, Time.smoothDeltaTime * movementSmoothing);
+            //Vector3 _velocity = new Vector3(movementInputValues.x, 0, movementInputValues.y).normalized * applySpeed;
+            //rb.MovePosition(rb.transform.position + _velocity * Time.deltaTime);
+            Vector3 _moveHorizontal = rb.transform.right * movementInputValues.x;
+            Vector3 _moveVertical = rb.transform.forward * movementInputValues.y;
+             _velocity = (_moveHorizontal + _moveVertical).normalized * applySpeed;
+            rb.MovePosition(rb.transform.position + _velocity * Time.deltaTime);
         }
-
-        /// Running state. Better use it in Update.
-	    public virtual void Running () {
-		    if (!isRunningAvaiable) return;
-		    if (!isGrounded) return;
-
-		    if (runningInputValue && endurance > 0.05f) {
-                releaseAcceleration = false;
-			    endurance -= Time.deltaTime * 2; //기력 감소
-			    currentAcceleration = Mathf.MoveTowards (currentAcceleration, runningAcceleration, Time.deltaTime * 10);
-		    }
-		    else {
-                releaseAcceleration = true;
-			    if (System.Math.Abs(endurance - referenceEndurance) > epsilon) {
-                    endurance = Mathf.MoveTowards (endurance, referenceEndurance, Time.deltaTime);
-                }
-		    }
-	    }
-
-        void LookingForGround () {
-            groungCheckPosition = new Vector3 (cc.transform.position.x, cc.transform.position.y - height / 2, cc.transform.position.z);
-           
-            if (Physics.CheckSphere (groungCheckPosition, 0.1f, groundMask, QueryTriggerInteraction.Ignore)) {
-                isGrounded = true;
-
-                if (!isLandingActionPerformed) { //최초 한번 실행
-                    isLandingActionPerformed = true;
-                    landingAction?.Invoke();
-                }
-                rb.drag = drag; //공기 저항력
-            }
+        //점프
+        private void IsGround()
+        {
+            isGrounded = Physics.Raycast(rb.transform.position, Vector3.down, collider.bounds.extents.y + 0.1f); //미끄러지는 수준은 무시
+            
+            if (isGrounded)
+                rb.drag = drag;
             else
-            { //공중 
-                isGrounded = false;
-                isLandingActionPerformed = false;
-                rb.drag = 0.5f; 
+                rb.drag = 0.5f;
+
+        }
+        //달리기
+        public void TryRun()
+        {
+            if (runningInputValue && endurance > 0)
+            {
+                Runnung();
+            }
+            if (runningCancelInputValue || endurance <= 0)
+            {
+                runningCancel();
             }
         }
+        void Runnung()
+        {
+            if (!isRunningAvaiable) return;
+            if (!isGrounded) return;
 
-        void MoveTorwardsAcceleration () {
-            if (!releaseAcceleration) return;
+            endurance -= Time.deltaTime * 2; //기력 감소
+            applySpeed = walkSpeed * 2f;
 
-            //차이가 작아질 때까지
-            if (System.Math.Abs(currentAcceleration - referenceAcceleration) > epsilon) {
-                currentAcceleration = Mathf.MoveTowards (currentAcceleration, referenceAcceleration, Time.deltaTime * 10);
-            }
         }
+        void runningCancel()
+        {
+            applySpeed = walkSpeed;
+        }
+
     }
+
 }

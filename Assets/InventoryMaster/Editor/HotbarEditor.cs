@@ -7,16 +7,18 @@ using System.Linq;
 [CustomEditor(typeof(Hotbar))]
 public class HotbarEditor : Editor
 {
-
     SerializedProperty slotsInTotal;
     SerializedProperty keyCodesForSlots;
+
     Hotbar hotbar;
 
     void OnEnable()
     {
-        hotbar = target as Hotbar;
-        slotsInTotal = serializedObject.FindProperty("slotsInTotal");
+        hotbar = target as Hotbar; //타겟팅
+
+        slotsInTotal = serializedObject.FindProperty("slotsInTotal"); //프로퍼티 직렬화 객체 참조
         keyCodesForSlots = serializedObject.FindProperty("keyCodesForSlots");
+
         slotsInTotal.intValue = hotbar.getSlotsInTotal();
     }
 

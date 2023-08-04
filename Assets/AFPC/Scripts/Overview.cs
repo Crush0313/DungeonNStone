@@ -42,6 +42,7 @@ namespace AFPC {
 
         [Header("References")]
         public Camera camera;
+        public Rigidbody rb;
 
         // Allow & Ban
             /// Allow the controller to read looking input values and rotate the camera.
@@ -86,12 +87,13 @@ namespace AFPC {
             //카메라 없음 / 보기 비활성화
 
             targetRotation.x -= lookingInputValues.y * sensitivity;
-            targetRotation.y += lookingInputValues.x * sensitivity;
+            targetRotation.y = lookingInputValues.x * sensitivity;
 
 			targetRotation.x = Mathf.Clamp (targetRotation.x, -verticalRange, verticalRange);
 		    
-		    camera.transform.localEulerAngles = new Vector3(targetRotation.x, targetRotation.y,0); //카메라 회전
-
+		    camera.transform.localEulerAngles = new Vector3(targetRotation.x, 0 ,0); //카메라 회전
+            Vector3 _characterRotationY = new Vector3(0, targetRotation.y, 0);
+            rb.MoveRotation(rb.rotation * Quaternion.Euler(_characterRotationY));
         }
 
         /// Changing the camera FOV value, or return to the default FOV value;

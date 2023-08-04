@@ -7,6 +7,7 @@ public class PlayerInventory : MonoBehaviour
 {
     public GameObject inventory;
     public GameObject characterSystem;
+
     private Inventory mainInventory;
     private Inventory characterSystemInventory;
     private Tooltip toolTip;
@@ -154,18 +155,18 @@ public class PlayerInventory : MonoBehaviour
 
     void Start()
     {
-        //if (HPMANACanvas != null)
-        //{
-        //    hpText = HPMANACanvas.transform.GetChild(1).GetChild(0).GetComponent<Text>();
+        if (HPMANACanvas != null)
+        {
+            hpText = HPMANACanvas.transform.GetChild(1).GetChild(0).GetComponent<Text>();
 
-        //    manaText = HPMANACanvas.transform.GetChild(2).GetChild(0).GetComponent<Text>();
+            manaText = HPMANACanvas.transform.GetChild(2).GetChild(0).GetComponent<Text>();
 
-        //    hpImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
-        //    manaImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
+            hpImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
+            manaImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
 
-        //    UpdateHPBar();
-        //    UpdateManaBar();
-        //}
+            UpdateHPBar();
+            UpdateManaBar();
+        }
 
         if (inputManagerDatabase == null)
             inputManagerDatabase = (InputManager)Resources.Load("InputManager");
@@ -178,19 +179,19 @@ public class PlayerInventory : MonoBehaviour
             characterSystemInventory = characterSystem.GetComponent<Inventory>();
     }
 
-    //void UpdateHPBar()
-    //{
-    //    hpText.text = (currentHealth + "/" + maxHealth);
-    //    float fillAmount = currentHealth / maxHealth;
-    //    hpImage.fillAmount = fillAmount;
-    //}
+    void UpdateHPBar()
+    {
+        hpText.text = (currentHealth + "/" + maxHealth);
+        float fillAmount = currentHealth / maxHealth;
+        hpImage.fillAmount = fillAmount;
+    }
 
-    //void UpdateManaBar()
-    //{
-    //    manaText.text = (currentMana + "/" + maxMana);
-    //    float fillAmount = currentMana / maxMana;
-    //    manaImage.fillAmount = fillAmount;
-    //}
+    void UpdateManaBar()
+    {
+        manaText.text = (currentMana + "/" + maxMana);
+        float fillAmount = currentMana / maxMana;
+        manaImage.fillAmount = fillAmount;
+    }
 
 
     public void OnConsumeItem(Item item)
@@ -226,11 +227,11 @@ public class PlayerInventory : MonoBehaviour
                     currentDamage += item.itemAttributes[i].attributeValue;
             }
         }
-        //if (HPMANACanvas != null)
-        //{
-        //    UpdateManaBar();
-        //    UpdateHPBar();
-        //}
+        if (HPMANACanvas != null)
+        {
+            UpdateManaBar();
+            UpdateHPBar();
+        }
     }
 
     public void OnGearItem(Item item)
@@ -246,11 +247,11 @@ public class PlayerInventory : MonoBehaviour
             if (item.itemAttributes[i].attributeName == "Damage")
                 maxDamage += item.itemAttributes[i].attributeValue;
         }
-        //if (HPMANACanvas != null)
-        //{
-        //    UpdateManaBar();
-        //    UpdateHPBar();
-        //}
+        if (HPMANACanvas != null)
+        {
+            UpdateManaBar();
+            UpdateHPBar();
+        }
     }
 
     public void OnUnEquipItem(Item item)
@@ -266,16 +267,15 @@ public class PlayerInventory : MonoBehaviour
             if (item.itemAttributes[i].attributeName == "Damage")
                 maxDamage -= item.itemAttributes[i].attributeValue;
         }
-        //if (HPMANACanvas != null)
-        //{
-        //    UpdateManaBar();
-        //    UpdateHPBar();
-        //}
+        if (HPMANACanvas != null)
+        {
+            UpdateManaBar();
+            UpdateHPBar();
+        }
     }
 
 
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))

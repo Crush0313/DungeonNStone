@@ -11,12 +11,12 @@ public class EquipmentSystemEditor : Editor
     SerializedProperty slotsInTotal;
     SerializedProperty itemTypeOfSlots;
     EquipmentSystem eS;
+
     void OnEnable()
     {
         eS = target as EquipmentSystem;
         slotsInTotal = serializedObject.FindProperty("slotsInTotal");
         itemTypeOfSlots = serializedObject.FindProperty("itemTypeOfSlots");
-
     }
 
     public override void OnInspectorGUI()

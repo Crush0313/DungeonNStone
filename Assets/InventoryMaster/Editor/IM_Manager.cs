@@ -11,11 +11,7 @@ public class IM_Manager : EditorWindow
     [MenuItem("Master System/IM - Manager")]
     static void Init()
     {
-        EditorWindow.GetWindow(typeof(IM_Manager));
-        headTexture = Resources.Load<Texture>("EditorWindowTextures/headTexture");
-        skypeTexture = Resources.Load<Texture>("EditorWindowTextures/skype-icon");
-        emailTexture = Resources.Load<Texture>("EditorWindowTextures/email-icon");
-        folderIcon = Resources.Load<Texture>("EditorWindowTextures/folder-icon");
+        GetWindow(typeof(IM_Manager));
 
         Object itemDatabase = Resources.Load("ItemDatabase");
         if (itemDatabase == null)
@@ -38,14 +34,8 @@ public class IM_Manager : EditorWindow
 
     }
 
-    static Texture skypeTexture;
-    static Texture emailTexture;
-    static Texture headTexture;
-    static Texture folderIcon;
-
     bool showInputManager;
     bool showItemDataBase;
-    bool showBluePrintDataBase;
 
     //Itemdatabase
     static ItemDataBaseList inventoryItemList = null;
@@ -72,21 +62,6 @@ public class IM_Manager : EditorWindow
     public int toolbarInt = 0;
     public string[] toolbarStrings = new string[] { "Create Items", "Manage Items" };
 
-    //Blueprintdatabase
-    //static BlueprintDatabase bluePrintDatabase = null;
-    List<bool> manageItem1 = new List<bool>();
-    int amountOfFinalItem;
-    //    float timeToCraft;
-    int finalItemID;
-    int amountofingredients;
-    int[] ingredients;
-    int[] amount;
-    ItemDataBaseList itemdatabase;
-    Vector2 scrollPosition1;
-
-    public int toolbarInt1 = 0;
-    public string[] toolbarStrings1 = new string[] { "Create Blueprints", "Manage Blueprints" };
-
     void OnGUI()
     {
         Header();
@@ -95,7 +70,6 @@ public class IM_Manager : EditorWindow
         {
             showInputManager = !showInputManager;
             showItemDataBase = false;
-            showBluePrintDataBase = false;
         }
 
         if (showInputManager)
@@ -106,21 +80,12 @@ public class IM_Manager : EditorWindow
         {
             showInputManager = false;
             showItemDataBase = !showItemDataBase;
-            showBluePrintDataBase = false;
         }
 
-        if (GUILayout.Button("Blueprintdatabase"))
-        {
-            showInputManager = false;
-            showItemDataBase = false;
-            showBluePrintDataBase = !showBluePrintDataBase;
-        }
         EditorGUILayout.EndHorizontal();
 
         if (showItemDataBase)
             ItemDataBase();
-
-
     }
 
 
@@ -135,14 +100,8 @@ public class IM_Manager : EditorWindow
         inputManagerDatabase.InventoryKeyCode = (KeyCode)EditorGUILayout.EnumPopup("Inventory", (KeyCode)inputManagerDatabase.InventoryKeyCode);
         inputManagerDatabase.StorageKeyCode = (KeyCode)EditorGUILayout.EnumPopup("Storage", (KeyCode)inputManagerDatabase.StorageKeyCode);
         inputManagerDatabase.CharacterSystemKeyCode = (KeyCode)EditorGUILayout.EnumPopup("Charactersystem", (KeyCode)inputManagerDatabase.CharacterSystemKeyCode);
-        inputManagerDatabase.CraftSystemKeyCode = (KeyCode)EditorGUILayout.EnumPopup("Craftsystem", (KeyCode)inputManagerDatabase.CraftSystemKeyCode);
         inputManagerDatabase.SplitItem = (KeyCode)EditorGUILayout.EnumPopup("Split", (KeyCode)inputManagerDatabase.SplitItem);
 
-        //if(inputManagerDatabase.UFPS)
-        //{
-        //    inputManagerDatabase.throwGrenade = (KeyCode)EditorGUILayout.EnumPopup("Grenade", (KeyCode)inputManagerDatabase.throwGrenade);
-        //    inputManagerDatabase.reloadWeapon = (KeyCode)EditorGUILayout.EnumPopup("Reload", (KeyCode)inputManagerDatabase.reloadWeapon);
-        //}
 
         EditorUtility.SetDirty(inputManagerDatabase);
 
@@ -400,56 +359,9 @@ public class IM_Manager : EditorWindow
     {
         GUILayout.BeginHorizontal();
 
-        if (headTexture == null || emailTexture == null || skypeTexture == null || folderIcon == null)
-        {
-            headTexture = Resources.Load<Texture>("EditorWindowTextures/headTexture");
-            skypeTexture = Resources.Load<Texture>("EditorWindowTextures/skype-icon");
-            emailTexture = Resources.Load<Texture>("EditorWindowTextures/email-icon");
-            folderIcon = Resources.Load<Texture>("EditorWindowTextures/folder-icon");
-        }
-
-        GUI.DrawTexture(new Rect(10, 10, 75, 75), headTexture);
-        GUILayout.Space(90);
 
         GUILayout.BeginVertical();
         GUILayout.Space(10);
-
-        GUILayout.BeginVertical("Box");
-        GUILayout.Label("┌─Informations", EditorStyles.boldLabel);
-
-        GUILayout.BeginHorizontal();
-
-        GUI.DrawTexture(new Rect(95, 35, 15, 15), emailTexture);
-        GUILayout.Space(25);
-        GUILayout.Label("buchheim.sander@yahoo.de");
-
-        GUILayout.EndHorizontal();
-
-        GUILayout.BeginHorizontal();
-
-        GUI.DrawTexture(new Rect(95, 52, 15, 15), skypeTexture);
-        GUILayout.Space(25);
-        GUILayout.Label("sander.buchheim");
-
-        GUILayout.EndHorizontal();
-
-        GUILayout.BeginHorizontal();
-
-        GUI.DrawTexture(new Rect(95, 71, 15, 15), folderIcon);
-        GUILayout.Space(25);
-        GUILayout.BeginHorizontal();
-        if (GUILayout.Button("Documentation and Script API", GUIStyle.none))
-        {
-            Application.OpenURL("http://spklup1991.alfahosting.org/Webversion/Scripting%20API%20Inventory%20Master.pdf");
-            Application.OpenURL("http://spklup1991.alfahosting.org/Webversion/Documentation%20Inventory%20Master.pdf");
-        }
-
-        GUILayout.EndHorizontal();
-
-        GUILayout.EndHorizontal();
-
-        GUILayout.EndVertical();
-
         GUILayout.EndVertical();
 
         GUILayout.EndHorizontal();
@@ -459,34 +371,8 @@ public class IM_Manager : EditorWindow
         if (inputManagerDatabase == null)
             inputManagerDatabase = (InputManager)Resources.Load("InputManager");
 
-        //inputManagerDatabase.UFPS = EditorGUILayout.ToggleLeft("UFPS On/Off", inputManagerDatabase.UFPS);
-        //if (EditorGUI.EndChangeCheck())
-        //    setUFPSSettings();
-
     }
 
-    GameObject itemPrefab;
-    GameObject hotbarPrefab;
-
-    //void setUFPSSettings()
-    //{
-    //    itemPrefab = Resources.Load("Prefabs/Item") as GameObject;
-    //    hotbarPrefab = Resources.Load("Prefabs/Panel - Hotbar") as GameObject;
-
-    //    if(!inputManagerDatabase.UFPS)
-    //    {
-    //        if (itemPrefab.GetComponent<UFPS_ConsumeItem>() != null)
-    //            DestroyImmediate(itemPrefab.GetComponent<UFPS_ConsumeItem>(), true);
-    //        if (hotbarPrefab.GetComponent<UFPS_Hotbar>())
-    //            DestroyImmediate(hotbarPrefab.GetComponent<UFPS_Hotbar>(), true);           
-    //    }
-    //    else
-    //    {
-    //        itemPrefab.AddComponent<UFPS_ConsumeItem>();
-    //        hotbarPrefab.AddComponent<UFPS_Hotbar>();            
-    //    }
-
-    //}
 
     void addItem()                                          //add new item to the itemdatabase
     {

@@ -14,17 +14,9 @@ public class StorageInventoryEditor : Editor
     private int itemValue = 1;
     private int imageTypeIndex;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void OnEnable()
     {
         inv = target as StorageInventory;
-
     }
 
     public override void OnInspectorGUI()

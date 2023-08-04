@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
-using System.Collections;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-
+//실제로 저장되어 아이템 관리하는 부분
 public class CreateItemDatabase
 {
     public static ItemDataBaseList asset;                                                  //The List of all Items
@@ -20,7 +19,4 @@ public class CreateItemDatabase
         return asset;
     }
 #endif
-
-
-
 }

@@ -11,21 +11,6 @@ using UnityEngine.EventSystems;
 
 public class EquipmentSystem : MonoBehaviour
 {
-    [SerializeField]
-    public int slotsInTotal;
-    [SerializeField]
-    public ItemType[] itemTypeOfSlots = new ItemType[999];
-
-    void Start()
-    {
-        ConsumeItem.eS = GetComponent<EquipmentSystem>();
-    }
-
-    public void getSlotsInTotal()
-    {
-        Inventory inv = GetComponent<Inventory>();
-        slotsInTotal = inv.width * inv.height;
-    }
 #if UNITY_EDITOR
     [MenuItem("Master System/Create/Equipment")]        //creating the menu item
     public static void menuItemCreateInventory()       //create the inventory at start
@@ -63,6 +48,22 @@ public class EquipmentSystem : MonoBehaviour
         }
     }
 #endif
+
+    [SerializeField]
+    public int slotsInTotal;
+    [SerializeField]
+    public ItemType[] itemTypeOfSlots = new ItemType[999];
+
+    void Start()
+    {
+        ConsumeItem.eS = GetComponent<EquipmentSystem>();
+    }
+
+    public void getSlotsInTotal()
+    {
+        Inventory inv = GetComponent<Inventory>();
+        slotsInTotal = inv.width * inv.height;
+    }
 
 }
 

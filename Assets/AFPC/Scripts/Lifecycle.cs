@@ -19,7 +19,7 @@ namespace AFPC {
         bool isHealthRecovery = true;
         int healthRecoveryRate = 60;
 	
-        [Header("Shield")]
+        [Header("Mana")]
 	    public float referenceShield = 100.0f;
 	    float shield = 1;
         bool isShieldRecovery = true;

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9cff0d2c33dc9a43bcbee2028e41c5c, type: 3}
   m_Name: InputManager
   m_EditorClassIdentifier: 
-  UFPS: 1
+  UFPS: 0
   reloadWeapon: 114
   throwGrenade: 103
-  SplitItem: 305
+  SplitItem: 122
   InventoryKeyCode: 105
   StorageKeyCode: 101
   CharacterSystemKeyCode: 99

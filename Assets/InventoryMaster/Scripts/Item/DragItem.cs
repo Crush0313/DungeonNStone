@@ -143,7 +143,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                     {
                                         GameObject dup = secondItemGameObject.GetComponent<ConsumeItem>().duplication;
                                         dup.GetComponent<ItemOnObject>().item.itemValue = secondItem.itemValue;
-                                        dup.GetComponent<SplitItem>().inv.stackableSettings();
+                                        //dup.GetComponent<SplitItem>().inv.stackableSettings();
                                         dup.transform.parent.parent.parent.GetComponent<Inventory>().updateItemList();
                                     }
                                 }
@@ -299,7 +299,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
 
                                     createDuplication(this.gameObject);
                                     secondItemGameObject.GetComponent<ConsumeItem>().duplication.GetComponent<ItemOnObject>().item = secondItem;
-                                    secondItemGameObject.GetComponent<SplitItem>().inv.stackableSettings();
+                                    //secondItemGameObject.GetComponent<SplitItem>().inv.stackableSettings();
 
                                 }
                             }
@@ -406,17 +406,9 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
 
                             if (!temp1.Equals(temp2))
                             {
-                                if (firstItem.itemType == ItemType.UFPS_Weapon)
-                                {
+                                Inventory.GetComponent<Inventory>().EquiptItem(firstItem);
+                                if (secondItem.itemType != ItemType.Backpack)
                                     Inventory.GetComponent<Inventory>().UnEquipItem1(secondItem);
-                                    Inventory.GetComponent<Inventory>().EquiptItem(firstItem);
-                                }
-                                else
-                                {
-                                    Inventory.GetComponent<Inventory>().EquiptItem(firstItem);
-                                    if (secondItem.itemType != ItemType.Backpack)
-                                        Inventory.GetComponent<Inventory>().UnEquipItem1(secondItem);
-                                }
                             }
 
                             if (fromHot)

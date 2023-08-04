@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
+//뼈대 클래스
 [System.Serializable]
 public class Item
 {
@@ -12,17 +12,15 @@ public class Item
     public GameObject itemModel;                                //itemModel of the item
     public int itemValue = 1;                                   //itemValue is at start 1
     public ItemType itemType;                                   //itemType of the Item
-    public float itemWeight;                                    //itemWeight of the item
     public int maxStack = 1;
     public int indexItemInList = 999;    
     public int rarity;
 
-    [SerializeField]
-    public List<ItemAttribute> itemAttributes = new List<ItemAttribute>();    
+    //[SerializeField]
+    public List<ItemAttribute> itemAttributes = new List<ItemAttribute>();  
     
     public Item(){}
-
-    public Item(string name, int id, string desc, Sprite icon, GameObject model, int maxStack, ItemType type, string sendmessagetext, List<ItemAttribute> itemAttributes)                 //function to create a instance of the Item
+    public Item(string name, int id, string desc, Sprite icon, GameObject model, int _maxStack, ItemType type, string sendmessagetext, List<ItemAttribute> _itemAttributes)                 //function to create a instance of the Item
     {
         itemName = name;
         itemID = id;
@@ -30,16 +28,16 @@ public class Item
         itemIcon = icon;
         itemModel = model;
         itemType = type;
-        this.maxStack = maxStack;
-        this.itemAttributes = itemAttributes;
+
+        maxStack = _maxStack;
+        itemAttributes = _itemAttributes;
     }
 
     public Item getCopy()
     {
+        //value 타입은 독립적으로 객체를 복사하고, reference 타입(컴포넌트)은 동일 객체 참조
         return (Item)this.MemberwiseClone();        
     }   
-    
-    
 }
 
 

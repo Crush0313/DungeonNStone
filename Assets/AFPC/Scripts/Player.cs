@@ -38,19 +38,15 @@ public class Player : MonoBehaviour {
         //overview.rigidInit(movement.rb);// Mouse look state 
         overview.Aiming();// Change camera FOV state 
         overview.Shaking();// Shake camera state. Required "physical camera" mode on 
-  
-        movement.Running();// Control the speed 
+
+        movement.Move();
+        movement.TryRun();// Control the speed 
         movement.Jumping();// Control the jumping, ground search... 
 
         //체력, 방어력 회복
         lifecycle.Runtime();// Control the health, shield recovery 
     }
 
-    void FixedUpdate () {
-        if (!lifecycle.Availability()) return; //죽었으면 함수 끝내버림
-
-        movement.Accelerate();// Physical movement 
-    }
 
     void ReadInput () {
         //테스트용 코드
@@ -61,19 +57,21 @@ public class Player : MonoBehaviour {
 
         movement.jumpingInputValue = Input.GetButtonDown("Jump");
         movement.runningInputValue = Input.GetKey(KeyCode.LeftShift);
+        movement.runningCancelInputValue = Input.GetKeyUp(KeyCode.LeftShift);
 
-        movement.movementInputValues.x = Input.GetAxis("Horizontal");
-        movement.movementInputValues.y = Input.GetAxis("Vertical");
+        movement.movementInputValues.x = Input.GetAxisRaw("Horizontal");
+        movement.movementInputValues.y = Input.GetAxisRaw("Vertical");
 
 
-        overview.aimingInputValue = Input.GetMouseButton(1);
+        overview.aimingInputValue = Input.GetKey(KeyCode.V);
 
         overview.lookingInputValues.x = Input.GetAxisRaw("Mouse X");
         overview.lookingInputValues.y = Input.GetAxisRaw("Mouse Y");
     }
 
     void DamageFX () {
-        if (HUD) HUD.DamageFX();
+        if (HUD)
+            HUD.DamageFX();
         overview.Shake(0.05f);
     }
 }

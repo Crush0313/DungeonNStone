@@ -56,15 +56,21 @@ public class Hotbar : MonoBehaviour
     {
         for (int i = 0; i < slotsInTotal; i++)
         {
-            if (Input.GetKeyDown(keyCodesForSlots[i]))
+            if (Input.GetKeyDown(keyCodesForSlots[i])) //슬롯 키를 누름
             {
-                if (transform.GetChild(1).GetChild(i).childCount != 0 && transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemType != ItemType.UFPS_Ammo)
+                if (transform.GetChild(1).GetChild(i).childCount != 0) //개수가 0이 아닌 이상
                 {
-                    if (transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ConsumeItem>().duplication != null && transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.maxStack == 1)
+                    ConsumeItem _consumeItem = transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ConsumeItem>();
+
+                    //개수가 1이면 (이제 0이 되는)
+                    //duplication 삭제
+                    if (_consumeItem.duplication != null &&
+                        _consumeItem.GetComponent<ItemOnObject>().item.maxStack == 1)
                     {
-                        Destroy(transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ConsumeItem>().duplication);
+                        Destroy(_consumeItem.duplication);
                     }
-                    transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ConsumeItem>().consumeIt();
+                    //사용
+                    _consumeItem.consumeIt();
                 }
             }
         }

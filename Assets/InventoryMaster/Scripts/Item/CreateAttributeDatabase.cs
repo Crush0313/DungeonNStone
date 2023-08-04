@@ -1,13 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-using System.Collections.Generic;
 
+//실제로 저장되어 속성을 관리하는 부분
 public class CreateAttributeDatabase : MonoBehaviour
 {
-
     public static ItemAttributeList asset;                                                  //The List of all Items
 
 #if UNITY_EDITOR
@@ -20,5 +18,4 @@ public class CreateAttributeDatabase : MonoBehaviour
         return asset;
     }
 #endif
-
 }

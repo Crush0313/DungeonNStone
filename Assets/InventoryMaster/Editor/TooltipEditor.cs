@@ -35,7 +35,9 @@ public class TooltipEditor : Editor
     void OnEnable()
     {
         tooltip = target as Tooltip;
+
         tooltip.setVariables();
+
         tooltipWidth = serializedObject.FindProperty("tooltipWidth");
         tooltipHeight = serializedObject.FindProperty("tooltipHeight");
         showTooltipIcon = serializedObject.FindProperty("showTooltipIcon");
