@@ -43,9 +43,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
             if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransformSlot, Input.mousePosition, data.pressEventCamera, out localPointerPosition))
             {
                 rectTransform.localPosition = localPointerPosition - pointerOffset;
-                // dup 파괴
-                if (transform.GetComponent<ConsumeItem>().duplication != null)
-                    Destroy(transform.GetComponent<ConsumeItem>().duplication);
+
             }
         }
         //인벤 업데이트
@@ -67,20 +65,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
             updateInventoryList();
     }
 
-    //매개변수로 가져온 아이템의 복제본을 만들어 메인 인벤에 넣고, 아이템의 dup에 넣음, dup의 dup에 아이템을 넣어 서로 참조.
-    public void createDuplication(GameObject Item)
-    {
-        Item item = Item.GetComponent<ItemOnObject>().item;
-
-        //메인 인벤토리에 템을 넣음
-        //그리고 스텍 세팅 실행
-        GameObject duplication = GameObject.FindGameObjectWithTag("MainInventory").GetComponent<Inventory>().addItemToInventory(item.itemID, item.itemValue);
-        duplication.transform.parent.parent.parent.GetComponent<Inventory>().stackableSettings();
-        
-        //item의 dup으로 설정하고, dup의 dup으로 item을 설정함
-        Item.GetComponent<ConsumeItem>().duplication = duplication;
-        duplication.GetComponent<ConsumeItem>().duplication = Item;
-    }
 
     public void OnEndDrag(PointerEventData data)
     {
@@ -165,15 +149,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                     Destroy(firstItemGameObject);
                                     secondItemRectTransform.localPosition = Vector3.zero;
 
-                                    //세컨템의 dup이 null이 아닌 이상
-                                    if (secondItemGameObject.GetComponent<ConsumeItem>().duplication != null)
-                                    {
-                                        //세컨템 dup의 갯수를 세컨템의 갯수로 설정, 세컨템 dup이 있는 인벤 업뎃
-                                        GameObject dup = secondItemGameObject.GetComponent<ConsumeItem>().duplication;
-                                        dup.GetComponent<ItemOnObject>().item.itemValue = secondItem.itemValue;
-                                        //dup.GetComponent<SplitItem>().inv.stackableSettings();
-                                        dup.transform.parent.parent.parent.GetComponent<Inventory>().updateItemList();
-                                    }
                                 }
 
                                 else
@@ -229,10 +204,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                         secondItemGameObject.transform.SetParent(oldSlot.transform);
                                         secondItemRectTransform.localPosition = Vector3.zero;
                                         firstItemRectTransform.localPosition = Vector3.zero;
-
-                                        //dup이 있으면 파괴
-                                        if (secondItemGameObject.GetComponent<ConsumeItem>().duplication != null)
-                                            Destroy(secondItemGameObject.GetComponent<ConsumeItem>().duplication);
 
                                     }
                                     //if you are dragging an item from the equipmentsystem to the inventory and they are not from the same itemtype they do not get swapped.                                    
@@ -302,15 +273,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                 Destroy(firstItemGameObject);
                                 secondItemRectTransform.localPosition = Vector3.zero;
 
-                                //세컨템의 dup이 null이 아닌 이상
-                                if (secondItemGameObject.GetComponent<ConsumeItem>().duplication != null)
-                                {
-                                    //세컨템 dup의 갯수를 세컨템의 갯수로 설정, 세컨템 dup이 있는 인벤 업뎃
-                                    GameObject dup = secondItemGameObject.GetComponent<ConsumeItem>().duplication;
-                                    dup.GetComponent<ItemOnObject>().item.itemValue = secondItem.itemValue;
-                                    //dup.GetComponent<SplitItem>().inv.stackableSettings();
-                                    dup.transform.parent.parent.parent.GetComponent<Inventory>().updateItemList();
-                                }
                             }
 
                             else
@@ -329,10 +291,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
 
                                     firstItemRectTransform.localPosition = Vector3.zero;
                                     secondItemRectTransform.localPosition = Vector3.zero;
-
-                                    createDuplication(this.gameObject);
-                                    secondItemGameObject.GetComponent<ConsumeItem>().duplication.GetComponent<ItemOnObject>().item = secondItem;
-                                    //secondItemGameObject.GetComponent<SplitItem>().inv.stackableSettings();
 
                                 }
                             }
@@ -354,8 +312,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                 secondItem.itemValue = firstItem.maxStack;
                                 firstItem.itemValue = rest;
 
-                                createDuplication(this.gameObject);
-
                                 firstItemGameObject.transform.SetParent(secondItemGameObject.transform.parent);
                                 secondItemGameObject.transform.SetParent(oldSlot.transform);
 
@@ -372,18 +328,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                     secondItemGameObject.transform.SetParent(oldSlot.transform);
                                     secondItemRectTransform.localPosition = Vector3.zero;
                                     firstItemRectTransform.localPosition = Vector3.zero;
-
-                                    //구 슬롯이 메인 인벤일 때
-                                    if (oldSlot.transform.parent.parent.gameObject.Equals(GameObject.FindGameObjectWithTag("MainInventory")))
-                                    {
-                                        //세컨템 dup 파괴, 퍼스트템 dup 생성 
-                                        Destroy(secondItemGameObject.GetComponent<ConsumeItem>().duplication);
-                                        createDuplication(firstItemGameObject);
-                                    }
-                                    else
-                                    {//퍼스트템 dup 생성 
-                                        createDuplication(firstItemGameObject);
-                                    }
+                                    
                                 }
                                 else
                                 {
@@ -409,8 +354,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
 
                             if (newSlot.transform.parent.parent.GetComponent<EquipmentSystem>() == null && oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() != null)
                                 oldSlot.transform.parent.parent.GetComponent<Inventory>().UnEquipItem1(firstItem);
-                            //첫 템 dup 생성
-                            createDuplication(firstItemGameObject);
                         }
                     }
 
@@ -446,9 +389,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                     Inventory.GetComponent<Inventory>().UnEquipItem1(secondItem);
                             }
 
-                            //핫바에서 왔으면, 세컨템의 dup 생성
-                            if (fromHot)
-                                createDuplication(secondItemGameObject);
 
                         }
                         //if they are not from the same Itemtype the dragged one getting placed back
@@ -457,8 +397,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                             firstItemGameObject.transform.SetParent(oldSlot.transform);
                             firstItemRectTransform.localPosition = Vector3.zero;
 
-                            if (fromHot)
-                                createDuplication(firstItemGameObject);
                         }
 
                     }
@@ -484,8 +422,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                 {
                                     transform.SetParent(oldSlot.transform);
                                     rectTransform.localPosition = Vector3.zero;
-                                    if (fromHot)
-                                        createDuplication(firstItemGameObject);
                                 }
                             }
                         }

@@ -11,7 +11,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
     public ItemType[] itemTypeOfSlot;
     public static EquipmentSystem eS;
 
-    public GameObject duplication; //어디에 쓰는 물건인고...드래그,인벤,핫바에 쓰임
     public static GameObject mainInventory;
 
     void Start()
@@ -71,9 +70,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                 eS.gameObject.GetComponent<Inventory>().updateItemList();
                                 inventory.updateItemList();
 
-
-                                if (duplication != null) //dup이 있으면 파괴
-                                    Destroy(duplication.gameObject);
                                 break; //for문 탈출
                             }
 
@@ -113,18 +109,12 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     otherItemFromCharacterSystem.transform.SetParent(transform.parent);
                                     otherItemFromCharacterSystem.GetComponent<RectTransform>().localPosition = Vector3.zero;
 
-                                    //핫바라면 복제
-                                    if (transform.parent.parent.parent.GetComponent<Hotbar>() != null)
-                                        createDuplication(otherItemFromCharacterSystem);
 
                                     transform.SetParent(eS.transform.GetChild(1).GetChild(i));
                                     transform.GetComponent<RectTransform>().localPosition = Vector3.zero;
                                 }
 
 
-                                //duplication에 뭔가 있으면 그 오브젝트 파괴
-                                if (duplication != null)
-                                    Destroy(duplication.gameObject);
 
                                 //장비 인벤토리, 쓰는 인벤토리(메인이 아닌 핫바나 창고일 수 있음) 변화 업데이트
                                 eS.gameObject.GetComponent<Inventory>().updateItemList();
@@ -138,34 +128,9 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                     if (!gearable)
                     {
 
-                        //dup에 뭔가 있으면
-                        //dup의 아이템 정보를 item from dup로 부름
-                        Item itemFromDup = null; //= dup의 아이템 컴포넌트
-                        if (duplication != null)
-                            itemFromDup = duplication.GetComponent<ItemOnObject>().item;
-
                         //아이템 사용하고, 개수 차감
                         inventory.ConsumeItem(item);
                         item.itemValue--;
-
-                        //dup에 뭔가 있어서, item from dup이 있으면
-                        if (itemFromDup != null)
-                        {
-                            //dup의 아이템 개수도 차감하고
-                            itemFromDup.itemValue--;
-
-                            //dup의 아이템 개수가 0이 되거나 더 작으면
-                            if (itemFromDup.itemValue <= 0)
-                            {
-                                //툴팁이 없지 않은 이상, 툴팁 비활성화
-                                if (tooltip != null)
-                                    tooltip.deactivateTooltip();
-
-                                //인벤에서 템 없애고, dup 오브젝트 삭제
-                                inventory.deleteItemFromInventory(item);
-                                Destroy(duplication.gameObject);
-                            }
-                        }
 
                         if (item.itemValue <= 0)
                         {
@@ -200,10 +165,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
             itemTypeOfSlot = eS.itemTypeOfSlots;
         */
 
-        Item itemFromDup = null;
-        //dup이 있으면, item from dup로 아이템 호출어 축약
-        if (duplication != null)
-            itemFromDup = duplication.GetComponent<ItemOnObject>().item;       
 
 
         //장비 시스템이 없지않은 이상
@@ -223,10 +184,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                         eS.gameObject.GetComponent<Inventory>().updateItemList();
                         inventory.updateItemList();
                         inventory.EquiptItem(item);
-
-                        //
-                        if (duplication != null)
-                            Destroy(duplication.gameObject);
 
                         break;
                     }
@@ -255,15 +212,10 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                         {
                             otherItemFromCharacterSystem.transform.SetParent(this.transform.parent);
                             otherItemFromCharacterSystem.GetComponent<RectTransform>().localPosition = Vector3.zero;
-                            if (this.gameObject.transform.parent.parent.parent.GetComponent<Hotbar>() != null)
-                                createDuplication(otherItemFromCharacterSystem);
 
                             this.gameObject.transform.SetParent(eS.transform.GetChild(1).GetChild(i));
                             this.gameObject.GetComponent<RectTransform>().localPosition = Vector3.zero;
                         }
-
-                        if (duplication != null)
-                            Destroy(duplication.gameObject);
 
                         eS.gameObject.GetComponent<Inventory>().updateItemList();
                         inventory.OnUpdateItemList();
@@ -276,24 +228,9 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
         //장비템이 아님
         if (!gearable)
         {
-            if (duplication != null)
-                itemFromDup = duplication.GetComponent<ItemOnObject>().item;
-
             inventory.ConsumeItem(item);
 
             item.itemValue--;
-
-            if (itemFromDup != null)
-            {
-                duplication.GetComponent<ItemOnObject>().item.itemValue--;
-                if (itemFromDup.itemValue <= 0)
-                {
-                    if (tooltip != null)
-                        tooltip.deactivateTooltip();
-                    inventory.deleteItemFromInventory(item);
-                    Destroy(duplication.gameObject);
-                }
-            }
 
             if (item.itemValue <= 0)
             {
@@ -305,12 +242,4 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
         }        
     }
 
-    public void createDuplication(GameObject _Item)
-    {
-        Item item = _Item.GetComponent<ItemOnObject>().item; //아이템 정보를 가져와서
-        GameObject dup = mainInventory.GetComponent<Inventory>().addItemToInventory(item.itemID, item.itemValue); //dup에 해당 정보를 복사함
-        
-        _Item.GetComponent<ConsumeItem>().duplication = dup; //아이템의 dup에 dup을 넣고
-        dup.GetComponent<ConsumeItem>().duplication = _Item; //그 dup의 dup에는 item을 넣음
-    }
 }

@@ -58,16 +58,6 @@ public class Hotbar : MonoBehaviour
                 if (transform.GetChild(1).GetChild(i).childCount != 0) //개수가 0이 아닌 이상
                 {
                     ConsumeItem _consumeItem = transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ConsumeItem>();
-
-                    //dup가 없지 않은 이상
-                    //최대 중첩 개수가 1이면
-                    if (_consumeItem.duplication != null &&
-                        _consumeItem.GetComponent<ItemOnObject>().item.maxStack == 1)
-                    {
-                        //dup 삭제
-                        Destroy(_consumeItem.duplication);
-                    }
-                    //사용
                     _consumeItem.consumeIt();
                 }
             }
