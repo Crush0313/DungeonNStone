@@ -11,7 +11,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
     public ItemType[] itemTypeOfSlot;
     public static EquipmentSystem eS;
 
-    public GameObject duplication; //어디에 쓰는 물건인고...
+    public GameObject duplication; //어디에 쓰는 물건인고...드래그,인벤,핫바에 쓰임
     public static GameObject mainInventory;
 
     void Start()
@@ -40,9 +40,8 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
         {
             bool gearable = false;
 
-            //이렇게 가져오는 이유는, 메인/장비/핫바 모드 인벤토리를 가지고 있기 때문, 
+            //이렇게 가져오는 이유는, 메인/장비/핫바 모두 인벤토리를 가지고 있기 때문, 
             Inventory inventory = transform.parent.parent.parent.GetComponent<Inventory>();
-
 
             //클릭이 '우클릭'이었을 시
             if (data.button == PointerEventData.InputButton.Right)
@@ -73,7 +72,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                 inventory.updateItemList();
 
 
-                                if (duplication != null) //duplication에 뭔가 있으면 그 오브젝트 파괴
+                                if (duplication != null) //dup이 있으면 파괴
                                     Destroy(duplication.gameObject);
                                 break; //for문 탈출
                             }
@@ -99,9 +98,11 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                 {
                                     Debug.Log("여기 null 떴어요");
                                     //해당 아이템을 떨어트림
+
                                     GameObject dropItem = (GameObject)Instantiate(otherSlotItem.itemModel);
                                     dropItem.AddComponent<PickUpItem>();
                                     dropItem.GetComponent<PickUpItem>().item = otherSlotItem;
+
                                     dropItem.transform.localPosition = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
 
                                     //인벤 변화 업데이트
@@ -112,6 +113,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     otherItemFromCharacterSystem.transform.SetParent(transform.parent);
                                     otherItemFromCharacterSystem.GetComponent<RectTransform>().localPosition = Vector3.zero;
 
+                                    //핫바라면 복제
                                     if (transform.parent.parent.parent.GetComponent<Hotbar>() != null)
                                         createDuplication(otherItemFromCharacterSystem);
 
@@ -203,7 +205,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
         if (duplication != null)
             itemFromDup = duplication.GetComponent<ItemOnObject>().item;       
 
-        bool stop = false;
 
         //장비 시스템이 없지않은 이상
         //장비 시스템 쪽에서 start 때 es에 넣어줌
@@ -217,7 +218,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                     if (eS.transform.GetChild(1).GetChild(i).childCount == 0)
                     {
                         gearable = true;
-                        stop = true;
                         this.gameObject.transform.SetParent(eS.transform.GetChild(1).GetChild(i));
                         this.gameObject.GetComponent<RectTransform>().localPosition = Vector3.zero;
                         eS.gameObject.GetComponent<Inventory>().updateItemList();
@@ -240,12 +240,15 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                         if (item.itemType != ItemType.Backpack)
                             inventory.UnEquipItem1(otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item);
 
+                        //this == null이 뭔 말이야
                         if (this == null)
                         {
+                            Debug.Log("여기 null 떴어요2");
                             GameObject dropItem = (GameObject)Instantiate(otherSlotItem.itemModel);
                             dropItem.AddComponent<PickUpItem>();
                             dropItem.GetComponent<PickUpItem>().item = otherSlotItem;
                             dropItem.transform.localPosition = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
+                            
                             inventory.OnUpdateItemList();
                         }
                         else
@@ -279,6 +282,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
             inventory.ConsumeItem(item);
 
             item.itemValue--;
+
             if (itemFromDup != null)
             {
                 duplication.GetComponent<ItemOnObject>().item.itemValue--;
@@ -290,6 +294,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                     Destroy(duplication.gameObject);
                 }
             }
+
             if (item.itemValue <= 0)
             {
                 if (tooltip != null)

@@ -548,6 +548,7 @@ public class Inventory : MonoBehaviour
     public bool checkIfItemAllreadyExist(int itemID, int itemValue)
     {
         updateItemList();
+
         int stack;
         for (int i = 0; i < ItemsInInventory.Count; i++)
         {
@@ -558,7 +559,8 @@ public class Inventory : MonoBehaviour
                 {
                     ItemsInInventory[i].itemValue = stack;
                     GameObject temp = getItemGameObject(ItemsInInventory[i]);
-                    if (temp != null && temp.GetComponent<ConsumeItem>().duplication != null)
+                    if (temp != null &&
+                        temp.GetComponent<ConsumeItem>().duplication != null)
                         temp.GetComponent<ConsumeItem>().duplication.GetComponent<ItemOnObject>().item.itemValue = stack;
                     return true;
                 }
@@ -671,6 +673,7 @@ public class Inventory : MonoBehaviour
 
     }
 
+    //해당 인벤의 슬롯을 돌면서, 갯수를 띄울 지 말지 활성/비활성 시키고, 갯수를 가져와 띄움 
     public void stackableSettings(bool stackable, Vector3 posi)
     {
         for (int i = 0; i < SlotContainer.transform.childCount; i++)
@@ -681,10 +684,11 @@ public class Inventory : MonoBehaviour
                 if (item.item.maxStack > 1)
                 {
                     RectTransform textRectTransform = SlotContainer.transform.GetChild(i).GetChild(0).GetChild(1).GetComponent<RectTransform>();
+                    textRectTransform.localPosition = posi; 
+
                     Text text = SlotContainer.transform.GetChild(i).GetChild(0).GetChild(1).GetComponent<Text>();
                     text.text = "" + item.item.itemValue;
                     text.enabled = stackable;
-                    textRectTransform.localPosition = posi;
                 }
             }
         }

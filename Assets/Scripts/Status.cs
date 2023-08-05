@@ -27,8 +27,6 @@ public class Status : MonoBehaviour
     public int Lv = 1;
     public int TargetExp;
     public int CurrentExp;
-    public float Hp;
-    public float Mp;
 
     public HUD hud;
 

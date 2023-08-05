@@ -1,33 +1,28 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using AFPC;
 
 public class PlayerInventory : MonoBehaviour
 {
     public GameObject inventory;
-    public GameObject characterSystem;
-
     private Inventory mainInventory;
+
+    public GameObject characterSystem;
     private Inventory characterSystemInventory;
+
     private Tooltip toolTip;
 
     private InputManager inputManagerDatabase;
 
     public GameObject HPMANACanvas;
+    Lifecycle lifecycle;
 
-    Text hpText;
-    Text manaText;
-    Image hpImage;
-    Image manaImage;
-
-    float maxHealth = 100;
-    float maxMana = 100;
+    //float lifecycle.MaxHp = 100;
+    //float lifecycle.MaxHp = 100;
     float maxDamage = 0;
     float maxArmor = 0;
 
-    public float currentHealth = 60;
-    float currentMana = 100;
+    //public float lifecycle.currentHp = 60;
+    //float lifecycle.currentHp = 100;
     float currentDamage = 0;
     float currentArmor = 0;
 
@@ -139,6 +134,7 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    //인벤이 작아지면 나머지 아이템들을 오브젝트로 뱉음
     void dropTheRestItems(int size)
     {
         if (size < mainInventory.ItemsInInventory.Count)
@@ -155,18 +151,8 @@ public class PlayerInventory : MonoBehaviour
 
     void Start()
     {
-        if (HPMANACanvas != null)
-        {
-            hpText = HPMANACanvas.transform.GetChild(1).GetChild(0).GetComponent<Text>();
-
-            manaText = HPMANACanvas.transform.GetChild(2).GetChild(0).GetComponent<Text>();
-
-            hpImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
-            manaImage = HPMANACanvas.transform.GetChild(1).GetComponent<Image>();
-
-            UpdateHPBar();
-            UpdateManaBar();
-        }
+        lifecycle = GetComponent<Player>().lifecycle;
+        lifecycle.hud.updateValue();
 
         if (inputManagerDatabase == null)
             inputManagerDatabase = (InputManager)Resources.Load("InputManager");
@@ -179,20 +165,6 @@ public class PlayerInventory : MonoBehaviour
             characterSystemInventory = characterSystem.GetComponent<Inventory>();
     }
 
-    void UpdateHPBar()
-    {
-        hpText.text = (currentHealth + "/" + maxHealth);
-        float fillAmount = currentHealth / maxHealth;
-        hpImage.fillAmount = fillAmount;
-    }
-
-    void UpdateManaBar()
-    {
-        manaText.text = (currentMana + "/" + maxMana);
-        float fillAmount = currentMana / maxMana;
-        manaImage.fillAmount = fillAmount;
-    }
-
 
     public void OnConsumeItem(Item item)
     {
@@ -200,17 +172,17 @@ public class PlayerInventory : MonoBehaviour
         {
             if (item.itemAttributes[i].attributeName == "Health")
             {
-                if ((currentHealth + item.itemAttributes[i].attributeValue) > maxHealth)
-                    currentHealth = maxHealth;
+                if ((lifecycle.currentHp + item.itemAttributes[i].attributeValue) > lifecycle.MaxHp)
+                    lifecycle.currentHp = lifecycle.MaxHp;
                 else
-                    currentHealth += item.itemAttributes[i].attributeValue;
+                    lifecycle.currentHp += item.itemAttributes[i].attributeValue;
             }
             if (item.itemAttributes[i].attributeName == "Mana")
             {
-                if ((currentMana + item.itemAttributes[i].attributeValue) > maxMana)
-                    currentMana = maxMana;
+                if ((lifecycle.currentHp + item.itemAttributes[i].attributeValue) > lifecycle.MaxHp)
+                    lifecycle.currentHp = lifecycle.MaxHp;
                 else
-                    currentMana += item.itemAttributes[i].attributeValue;
+                    lifecycle.currentHp += item.itemAttributes[i].attributeValue;
             }
             if (item.itemAttributes[i].attributeName == "Armor")
             {
@@ -227,11 +199,7 @@ public class PlayerInventory : MonoBehaviour
                     currentDamage += item.itemAttributes[i].attributeValue;
             }
         }
-        if (HPMANACanvas != null)
-        {
-            UpdateManaBar();
-            UpdateHPBar();
-        }
+        lifecycle.hud.updateValue();
     }
 
     public void OnGearItem(Item item)
@@ -239,19 +207,15 @@ public class PlayerInventory : MonoBehaviour
         for (int i = 0; i < item.itemAttributes.Count; i++)
         {
             if (item.itemAttributes[i].attributeName == "Health")
-                maxHealth += item.itemAttributes[i].attributeValue;
+                lifecycle.MaxHp += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Mana")
-                maxMana += item.itemAttributes[i].attributeValue;
+                lifecycle.MaxHp += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
                 maxArmor += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Damage")
                 maxDamage += item.itemAttributes[i].attributeValue;
         }
-        if (HPMANACanvas != null)
-        {
-            UpdateManaBar();
-            UpdateHPBar();
-        }
+        lifecycle.hud.updateValue();
     }
 
     public void OnUnEquipItem(Item item)
@@ -259,19 +223,15 @@ public class PlayerInventory : MonoBehaviour
         for (int i = 0; i < item.itemAttributes.Count; i++)
         {
             if (item.itemAttributes[i].attributeName == "Health")
-                maxHealth -= item.itemAttributes[i].attributeValue;
+                lifecycle.MaxHp -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Mana")
-                maxMana -= item.itemAttributes[i].attributeValue;
+                lifecycle.MaxHp -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
                 maxArmor -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Damage")
                 maxDamage -= item.itemAttributes[i].attributeValue;
         }
-        if (HPMANACanvas != null)
-        {
-            UpdateManaBar();
-            UpdateHPBar();
-        }
+        lifecycle.hud.updateValue();
     }
 
 

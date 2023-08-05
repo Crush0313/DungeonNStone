@@ -51,8 +51,10 @@ public class EquipmentSystem : MonoBehaviour
 
     [SerializeField]
     public int slotsInTotal;
+
     [SerializeField]
     public ItemType[] itemTypeOfSlots = new ItemType[999];
+
 
     void Start()
     {

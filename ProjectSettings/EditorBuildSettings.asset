@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/InventoryMaster/Examples/Town.unity
     guid: a2f811dfcbbd60744a806d639f42f04e
   - enabled: 1
+    path: Assets/PurePoly/Mining_Pack/Scenes/DG1.unity
+    guid: 63ab98a5bbc4681498fd38f010d669e4
+  - enabled: 0
     path: Assets/InventoryMaster/Examples/DG1.unity
     guid: f3ec770a907a37147ab1daf7c5ebfd25
   m_configObjects: {}

@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-using System.Collections.Generic;
-using System.Linq;
 
 public class Hotbar : MonoBehaviour
 {
@@ -62,11 +59,12 @@ public class Hotbar : MonoBehaviour
                 {
                     ConsumeItem _consumeItem = transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ConsumeItem>();
 
-                    //개수가 1이면 (이제 0이 되는)
-                    //duplication 삭제
+                    //dup가 없지 않은 이상
+                    //최대 중첩 개수가 1이면
                     if (_consumeItem.duplication != null &&
                         _consumeItem.GetComponent<ItemOnObject>().item.maxStack == 1)
                     {
+                        //dup 삭제
                         Destroy(_consumeItem.duplication);
                     }
                     //사용
