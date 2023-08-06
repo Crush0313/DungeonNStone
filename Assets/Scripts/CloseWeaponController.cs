@@ -48,6 +48,7 @@ public class CloseWeaponController : MonoBehaviour
         WeaponAnim.SetTrigger("Atk");
 
         yield return new WaitForSeconds(attackDelayDmg);
+        SoundManager.instance.PlaySE("Atk_Sword");
         Attack();
         yield return new WaitForSeconds(attackDelayAll);
 
