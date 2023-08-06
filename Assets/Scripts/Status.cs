@@ -29,6 +29,8 @@ public class Status : MonoBehaviour
     public int CurrentExp;
 
     public HUD hud;
+    public GameObject prefabGO;
+    public GameObject R_Hand;
 
     private void Start()
     {
@@ -51,5 +53,15 @@ public class Status : MonoBehaviour
             CurrentExp = TargetExp - CurrentExp; //나머지 이월
         }
         hud.SetExpFill((float)CurrentExp / TargetExp);
+    }
+
+    public void SetWeapon()
+    {
+        if (R_Hand.transform.GetChild(0)!=null)
+            Destroy(R_Hand.transform.GetChild(0).gameObject);
+
+        GameObject prefab = prefabGO.GetComponent<ItemOnObject>().item.itemModel;
+        GameObject temp = Instantiate(prefab);
+        temp.transform.SetParent(R_Hand.transform, false);
     }
 }

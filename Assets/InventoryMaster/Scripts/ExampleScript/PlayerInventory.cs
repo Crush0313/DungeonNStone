@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using AFPC;
 
+//인벤토리가 아니라 플레이어에 부착됨
 public class PlayerInventory : MonoBehaviour
 {
     public GameObject inventory;
@@ -28,30 +29,80 @@ public class PlayerInventory : MonoBehaviour
 
     int normalSize = 3;
 
+    void Start()
+    {
+        lifecycle = GetComponent<Player>().lifecycle;
+        lifecycle.hud.updateValue();
+
+        if (inputManagerDatabase == null)
+            inputManagerDatabase = (InputManager)Resources.Load("InputManager");
+
+        if (GameObject.FindGameObjectWithTag("Tooltip") != null)
+            toolTip = GameObject.FindGameObjectWithTag("Tooltip").GetComponent<Tooltip>();
+        if (inventory != null)
+            mainInventory = inventory.GetComponent<Inventory>();
+        if (characterSystem != null)
+            characterSystemInventory = characterSystem.GetComponent<Inventory>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
+        {
+            if (!characterSystem.activeSelf)
+            {
+                characterSystemInventory.openInventory();
+            }
+            else
+            {
+                if (toolTip != null)
+                    toolTip.deactivateTooltip();
+                characterSystemInventory.closeInventory();
+            }
+        }
+
+        if (Input.GetKeyDown(inputManagerDatabase.InventoryKeyCode))
+        {
+            if (!inventory.activeSelf)
+            {
+                mainInventory.openInventory();
+            }
+            else
+            {
+                if (toolTip != null)
+                    toolTip.deactivateTooltip();
+                mainInventory.closeInventory();
+            }
+        }
+    }
     public void OnEnable()
     {
+        //배낭
         Inventory.ItemEquip += OnBackpack;
         Inventory.UnEquipItem += UnEquipBackpack;
-
+        //장비
         Inventory.ItemEquip += OnGearItem;
-        Inventory.ItemConsumed += OnConsumeItem;
         Inventory.UnEquipItem += OnUnEquipItem;
-
+        //소비형
+        Inventory.ItemConsumed += OnConsumeItem;
+        //무기
         Inventory.ItemEquip += EquipWeapon;
         Inventory.UnEquipItem += UnEquipWeapon;
     }
 
+    //플레이어에 부착되니 아마 비활성될 일은 없을 듯
     public void OnDisable()
     {
         Inventory.ItemEquip -= OnBackpack;
         Inventory.UnEquipItem -= UnEquipBackpack;
 
         Inventory.ItemEquip -= OnGearItem;
-        Inventory.ItemConsumed -= OnConsumeItem;
         Inventory.UnEquipItem -= OnUnEquipItem;
 
-        Inventory.UnEquipItem -= UnEquipWeapon;
+        Inventory.ItemConsumed -= OnConsumeItem;
+
         Inventory.ItemEquip -= EquipWeapon;
+        Inventory.UnEquipItem -= UnEquipWeapon;
     }
 
     void EquipWeapon(Item item)
@@ -149,21 +200,6 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        lifecycle = GetComponent<Player>().lifecycle;
-        lifecycle.hud.updateValue();
-
-        if (inputManagerDatabase == null)
-            inputManagerDatabase = (InputManager)Resources.Load("InputManager");
-
-        if (GameObject.FindGameObjectWithTag("Tooltip") != null)
-            toolTip = GameObject.FindGameObjectWithTag("Tooltip").GetComponent<Tooltip>();
-        if (inventory != null)
-            mainInventory = inventory.GetComponent<Inventory>();
-        if (characterSystem != null)
-            characterSystemInventory = characterSystem.GetComponent<Inventory>();
-    }
 
 
     public void OnConsumeItem(Item item)
@@ -202,6 +238,7 @@ public class PlayerInventory : MonoBehaviour
         lifecycle.hud.updateValue();
     }
 
+    //장비 착용
     public void OnGearItem(Item item)
     {
         for (int i = 0; i < item.itemAttributes.Count; i++)
@@ -218,6 +255,7 @@ public class PlayerInventory : MonoBehaviour
         lifecycle.hud.updateValue();
     }
 
+    //장비해제
     public void OnUnEquipItem(Item item)
     {
         for (int i = 0; i < item.itemAttributes.Count; i++)
@@ -236,37 +274,5 @@ public class PlayerInventory : MonoBehaviour
 
 
 
-    void Update()
-    {
-        if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
-        {
-            if (!characterSystem.activeSelf)
-            {
-                characterSystemInventory.openInventory();
-            }
-            else
-            {
-                if (toolTip != null)
-                    toolTip.deactivateTooltip();
-                characterSystemInventory.closeInventory();
-            }
-        }
-
-        if (Input.GetKeyDown(inputManagerDatabase.InventoryKeyCode))
-        {
-            if (!inventory.activeSelf)
-            {
-                mainInventory.openInventory();
-            }
-            else
-            {
-                if (toolTip != null)
-                    toolTip.deactivateTooltip();
-                mainInventory.closeInventory();
-            }
-        }
-
-
-    }
 
 }

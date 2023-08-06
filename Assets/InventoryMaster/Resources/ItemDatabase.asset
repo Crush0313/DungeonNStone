@@ -24,7 +24,6 @@ MonoBehaviour:
     itemModel: {fileID: 0}
     itemValue: 1
     itemType: 2
-    itemWeight: 0
     maxStack: 0
     indexItemInList: 999
     rarity: 0
@@ -40,8 +39,7 @@ MonoBehaviour:
     itemIcon: {fileID: 21300000, guid: 63dca6d4e4e873a4cb09997656d54082, type: 3}
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
-    itemType: 4
-    itemWeight: 0
+    itemType: 3
     maxStack: 1
     indexItemInList: 999
     rarity: 23
@@ -61,8 +59,7 @@ MonoBehaviour:
     itemIcon: {fileID: 21300000, guid: 52b1e3fc60614e446b61e1c6bb148f57, type: 3}
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
-    itemType: 4
-    itemWeight: 0
+    itemType: 3
     maxStack: 1
     indexItemInList: 999
     rarity: 62
@@ -82,8 +79,7 @@ MonoBehaviour:
     itemIcon: {fileID: 21300000, guid: fcd8bd2db18e92d42a7d14fc0e395888, type: 3}
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
-    itemType: 6
-    itemWeight: 0
+    itemType: 4
     maxStack: 1
     indexItemInList: 999
     rarity: 10
@@ -103,8 +99,7 @@ MonoBehaviour:
     itemIcon: {fileID: 21300000, guid: f5e3bff24c9077445a126833256147bd, type: 3}
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
-    itemType: 6
-    itemWeight: 0
+    itemType: 4
     maxStack: 1
     indexItemInList: 999
     rarity: 80
@@ -122,7 +117,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 1
-    itemWeight: 0
     maxStack: 1
     indexItemInList: 999
     rarity: 91
@@ -138,7 +132,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 1
-    itemWeight: 0
     maxStack: 1
     indexItemInList: 999
     rarity: 96
@@ -156,8 +149,7 @@ MonoBehaviour:
     itemIcon: {fileID: 21300000, guid: 3677eacbc4390644e97df27f50b96587, type: 3}
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
-    itemType: 5
-    itemWeight: 0
+    itemType: 6
     maxStack: 1
     indexItemInList: 999
     rarity: 1
@@ -177,8 +169,7 @@ MonoBehaviour:
     itemIcon: {fileID: 21300000, guid: ce2f65d4a0c353b409f2821db15cce5e, type: 3}
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
-    itemType: 5
-    itemWeight: 0
+    itemType: 6
     maxStack: 1
     indexItemInList: 999
     rarity: 21
@@ -193,10 +184,10 @@ MonoBehaviour:
 
       + 10 Damage'
     itemIcon: {fileID: 21300000, guid: 5bfa49903411b43448e6a525c69fc1fc, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
+    itemModel: {fileID: 8564360937053257348, guid: 8e71dfbd157f7c243ab5646790ad493c,
+      type: 3}
     itemValue: 1
     itemType: 1
-    itemWeight: 0
     maxStack: 1
     indexItemInList: 999
     rarity: 25
@@ -212,7 +203,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 2
-    itemWeight: 0
     maxStack: 100
     indexItemInList: 999
     rarity: 84
@@ -228,7 +218,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 5
     itemType: 2
-    itemWeight: 0
     maxStack: 10
     indexItemInList: 999
     rarity: 12
@@ -244,7 +233,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 2
-    itemWeight: 0
     maxStack: 5
     indexItemInList: 999
     rarity: 100
@@ -258,7 +246,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 2
-    itemWeight: 0
     maxStack: 5
     indexItemInList: 999
     rarity: 13
@@ -272,7 +259,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 2
-    itemWeight: 0
     maxStack: 5
     indexItemInList: 999
     rarity: 35
@@ -288,7 +274,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 2
-    itemWeight: 0
     maxStack: 5
     indexItemInList: 999
     rarity: 72
@@ -305,7 +290,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 2
-    itemWeight: 0
     maxStack: 5
     indexItemInList: 999
     rarity: 30
@@ -324,7 +308,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 2
-    itemWeight: 0
     maxStack: 5
     indexItemInList: 999
     rarity: 30
@@ -342,7 +325,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 2
-    itemWeight: 0
     maxStack: 5
     indexItemInList: 999
     rarity: 31
@@ -358,7 +340,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 4
     itemType: 2
-    itemWeight: 0
     maxStack: 10
     indexItemInList: 999
     rarity: 60
@@ -374,7 +355,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 13
-    itemWeight: 0
     maxStack: 1
     indexItemInList: 999
     rarity: 35
@@ -390,7 +370,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 13
-    itemWeight: 0
     maxStack: 1
     indexItemInList: 999
     rarity: 61
@@ -404,7 +383,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 15
     itemType: 17
-    itemWeight: 0
     maxStack: 999
     indexItemInList: 999
     rarity: 1
@@ -416,7 +394,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 16
-    itemWeight: 0
     maxStack: 1
     indexItemInList: 999
     rarity: 1
@@ -428,7 +405,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 16
-    itemWeight: 0
     maxStack: 1
     indexItemInList: 999
     rarity: 1
@@ -440,7 +416,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 50
     itemType: 17
-    itemWeight: 0
     maxStack: 999
     indexItemInList: 999
     rarity: 1
@@ -452,7 +427,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 4cb7c2a50f87abf459d60c25eedc60b7, type: 2}
     itemValue: 1
     itemType: 15
-    itemWeight: 0
     maxStack: 99
     indexItemInList: 999
     rarity: 1
@@ -464,7 +438,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 16
-    itemWeight: 0
     maxStack: 1
     indexItemInList: 999
     rarity: 0
@@ -476,7 +449,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 16
-    itemWeight: 0
     maxStack: 1
     indexItemInList: 999
     rarity: 0
@@ -488,7 +460,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 17
-    itemWeight: 0
     maxStack: 999
     indexItemInList: 999
     rarity: 0
@@ -496,15 +467,17 @@ MonoBehaviour:
   - itemName: Mace
     itemID: 30
     itemDesc: 
-    itemIcon: {fileID: 21300000, guid: a225d3715e468b04ca832c017dfbcc0a, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
+    itemIcon: {fileID: 21300000, guid: c7f2f74ac6819e747adc6222539aeac2, type: 3}
+    itemModel: {fileID: 2859819459032710050, guid: 54b4b62ef4d97aa48a5e1359c1b5eac0,
+      type: 3}
     itemValue: 1
-    itemType: 16
-    itemWeight: 0
+    itemType: 1
     maxStack: 1
     indexItemInList: 999
     rarity: 0
-    itemAttributes: []
+    itemAttributes:
+    - attributeName: Health
+      attributeValue: 54
   - itemName: Small Backpack
     itemID: 31
     itemDesc: 6 Slots
@@ -512,7 +485,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 13
-    itemWeight: 0
     maxStack: 1
     indexItemInList: 999
     rarity: 0
@@ -526,7 +498,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 13
-    itemWeight: 0
     maxStack: 1
     indexItemInList: 999
     rarity: 0
@@ -540,7 +511,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 13
-    itemWeight: 0
     maxStack: 1
     indexItemInList: 999
     rarity: 0
@@ -554,7 +524,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 13
-    itemWeight: 0
     maxStack: 1
     indexItemInList: 999
     rarity: 0
@@ -568,7 +537,6 @@ MonoBehaviour:
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
     itemValue: 1
     itemType: 16
-    itemWeight: 0
     maxStack: 1
     indexItemInList: 999
     rarity: 0

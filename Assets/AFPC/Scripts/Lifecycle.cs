@@ -33,7 +33,7 @@ namespace AFPC {
 
         public HUD hud;
 
-        
+
         UnityAction healAction;
         UnityAction damageAction;
         UnityAction deathAction;
@@ -180,7 +180,9 @@ namespace AFPC {
                 }
                 hud.updateValue();
             }
-	    }
+
+
+        }
 
         /// Damage the character. The Mp will be damaged first.
         public virtual void Damage (float value) {

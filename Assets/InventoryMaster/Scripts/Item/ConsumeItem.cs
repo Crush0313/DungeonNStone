@@ -127,19 +127,23 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                     //장비 아이템이 아닐 시
                     if (!gearable)
                     {
-
-                        //아이템 사용하고, 개수 차감
-                        inventory.ConsumeItem(item);
-                        item.itemValue--;
-
-                        if (item.itemValue <= 0)
+                        if (item.itemType == ItemType.Consumable)
                         {
-                            //툴팁 없지 않은 이상, 툴팁 비활성화
-                            if (tooltip != null)
-                                tooltip.deactivateTooltip();
 
-                            inventory.deleteItemFromInventory(item); //인벤토리에서 템 제거
-                            Destroy(this.gameObject); //템 오브젝트 제거
+                            //아이템 사용하고, 개수 차감
+                            inventory.ConsumeItem(item);
+                            item.itemValue--;
+
+                            //개수 0이 되면
+                            if (item.itemValue <= 0)
+                            {
+                                //툴팁 없지 않은 이상, 툴팁 비활성화
+                                if (tooltip != null)
+                                    tooltip.deactivateTooltip();
+
+                                inventory.deleteItemFromInventory(item); //인벤토리에서 템 제거
+                                Destroy(this.gameObject); //템 오브젝트 제거
+                            }
                         }
                     }
                 }
@@ -225,19 +229,25 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                 }
             }
         }
+
         //장비템이 아님
         if (!gearable)
         {
-            inventory.ConsumeItem(item);
-
-            item.itemValue--;
-
-            if (item.itemValue <= 0)
+            if (item.itemType == ItemType.Consumable)
             {
-                if (tooltip != null)
-                    tooltip.deactivateTooltip();
-                inventory.deleteItemFromInventory(item);
-                Destroy(this.gameObject); 
+                //사용
+                inventory.ConsumeItem(item);
+                //소비 (차감)
+                item.itemValue--;
+
+                //0되면 툴팁 비활성화
+                if (item.itemValue <= 0)
+                {
+                    if (tooltip != null)
+                        tooltip.deactivateTooltip();
+                    inventory.deleteItemFromInventory(item);
+                    Destroy(this.gameObject);
+                }
             }
         }        
     }
