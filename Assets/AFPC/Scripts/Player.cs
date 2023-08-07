@@ -10,6 +10,9 @@ public class Player : MonoBehaviour {
     public Lifecycle lifecycle;// Damage, Heal, Death, Respawn... 
     public Movement movement;// Move, Jump, Run... 
     public Overview overview;// Look, Aim, Shake... 
+    public CloseWeaponController closeWeaponController;
+
+    public static bool isInv;
 
     //클래스 초기화 대신 해주기. (네임스페이스에서 가져온거라 그런지 start 늘리기 싫은지, 각 start에서 해결하는 대신 여기서 함수 호출하는 방식)
     //액션에 내용추가
@@ -33,16 +36,19 @@ public class Player : MonoBehaviour {
 
         if (!lifecycle.Availability()) return; //죽었으면 함수 끝내버림
 
+        if (!isInv)
+        {
+            overview.Looking();
+            //overview.rigidInit(movement.rb);// Mouse look state 
+            overview.Aiming();// Change camera FOV state 
+            overview.Shaking();// Shake camera state. Required "physical camera" mode on 
 
-        overview.Looking();
-        //overview.rigidInit(movement.rb);// Mouse look state 
-        overview.Aiming();// Change camera FOV state 
-        overview.Shaking();// Shake camera state. Required "physical camera" mode on 
+            movement.Move();
+            movement.TryRun();// Control the speed 
+            movement.Jumping();// Control the jumping, ground search... 
 
-        movement.Move();
-        movement.TryRun();// Control the speed 
-        movement.Jumping();// Control the jumping, ground search... 
-
+            closeWeaponController.TryAttack();
+        }
         //체력, 방어력 회복
         lifecycle.Runtime();// Control the health, shield recovery 
     }

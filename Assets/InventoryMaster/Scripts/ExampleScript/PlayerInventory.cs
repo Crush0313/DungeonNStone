@@ -4,9 +4,11 @@ using AFPC;
 //인벤토리가 아니라 플레이어에 부착됨
 public class PlayerInventory : MonoBehaviour
 {
+    //메인 인벤토리
     public GameObject inventory;
     private Inventory mainInventory;
 
+    //장비 인벤토리
     public GameObject characterSystem;
     private Inventory characterSystemInventory;
 

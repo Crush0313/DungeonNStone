@@ -93,9 +93,25 @@ public class Inventory : MonoBehaviour
     public static event InventoryOpened InventoryOpen;
     public static event InventoryOpened AllInventoriesClosed;
 
+    public bool isMain = false;
+
+    private void OnEnable()
+    {
+        if(isMain)
+            Player.isInv = true;
+    }
+    private void OnDisable()
+    {
+        if (isMain)
+            Player.isInv = false;
+    }
+
     void Start()
     {
-        if (transform.GetComponent<Hotbar>() == null)
+        if (transform.tag == "MainInventory")
+            isMain = true;
+
+        if (transform.GetComponent<Hotbar>() == null && transform.GetComponent<EquipmentSystem>() == null)
             this.gameObject.SetActive(false);
 
         updateItemList();

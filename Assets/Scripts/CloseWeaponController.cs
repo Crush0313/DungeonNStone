@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//카메라에 붙여야 카메라가 보는 곳을 공격함
 public class CloseWeaponController : MonoBehaviour
 {
     protected bool isAttack = false;
@@ -12,13 +13,8 @@ public class CloseWeaponController : MonoBehaviour
     protected RaycastHit hitInfo;
     [SerializeField] protected LayerMask layerMask;
 
-    void Update()
-    {
-        TryAttack();
-    }
-
     // Update is called once per frame
-    protected void TryAttack()
+    public void TryAttack()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -33,10 +29,11 @@ public class CloseWeaponController : MonoBehaviour
     {
         if (chkObj())
         {
-            if (hitInfo.transform.tag == "WeakAnimal")
+            Debug.Log(hitInfo.transform.name);
+            if (hitInfo.transform.tag == "Mob")
             {
                 //SoundManager.instance.PlaySE("Animal_Hit");
-                //hitInfo.transform.GetComponent<WeakAnimal>().Damage(currentCloseWeapon.damage, transform.position);
+                hitInfo.transform.GetComponent<Mob>().Damage(1);
             }
         }
     }
