@@ -12,11 +12,15 @@ public class Player : MonoBehaviour {
     public Overview overview;// Look, Aim, Shake... 
     public CloseWeaponController closeWeaponController;
 
+    public static Transform PlayerTF;
+
     public static bool isInv;
 
     //클래스 초기화 대신 해주기. (네임스페이스에서 가져온거라 그런지 start 늘리기 싫은지, 각 start에서 해결하는 대신 여기서 함수 호출하는 방식)
     //액션에 내용추가
     void Start () {
+
+        PlayerTF = transform;
 
         // a few apllication settings(for more smooth). This is Optional
         QualitySettings.vSyncCount = 0; //모니터 주파수에 맞게 렌더링 퍼포먼스 조절. 성능 측정시 끔. tearing 현상 방지
@@ -27,7 +31,7 @@ public class Player : MonoBehaviour {
         lifecycle.AssignDamageAction(DamageFX); //인자 없어서 그냥 함수 이름으로 넣음
 
         /* Initialize movement, add camera shake when landing */
-        movement.Initialize();
+        movement.Initialize(overview);
         //movement.AssignLandingAction( ()=> overview.Shake(0.5f)); //인자가 있어서 화살표 함수로 넣음
     }
 
@@ -49,6 +53,8 @@ public class Player : MonoBehaviour {
 
             closeWeaponController.TryAttack();
         }
+        else
+            movement.runningCancel();
         //체력, 방어력 회복
         lifecycle.Runtime();// Control the health, shield recovery 
     }

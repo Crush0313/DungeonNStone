@@ -27,6 +27,9 @@ namespace AFPC {
         public float applySpeed;
         public float walkSpeed;
         public Vector3 _velocity;
+        public bool isRun = false;
+        Overview overview;
+        public float FovAmmount;
 
         [Header("Endurance")]
         public float referenceEndurance = 20.0f;
@@ -53,10 +56,11 @@ namespace AFPC {
         float epsilon = 0.01f;
 
         /// Initialize the movement. Generate physic material if needed. Prepare the rigidbody.
-        public virtual void Initialize () {
+        public virtual void Initialize (Overview _overview) {
             rb.freezeRotation = true;
             rb.drag = drag;
             applySpeed = walkSpeed;
+            overview = _overview;
 
             if (isGeneratePhysicMaterial) {
                 //물리 머테리얼 생성
@@ -185,27 +189,43 @@ namespace AFPC {
         //달리기
         public void TryRun()
         {
-            if (runningInputValue && endurance > 0)
+            if (runningInputValue)
             {
                 Runnung();
             }
-            if (runningCancelInputValue || endurance <= 0)
+            if (runningCancelInputValue)
             {
                 runningCancel();
             }
+
+
+
         }
         void Runnung()
         {
             if (!isRunningAvaiable) return;
             if (!isGrounded) return;
 
+            if (!isRun)
+            {
+                isRun = true;
+                applySpeed = walkSpeed * 2f;
+                overview.aimingFOV += FovAmmount;
+                overview.defaultFOV += FovAmmount;
+            }
+
             endurance -= Time.deltaTime * 2; //기력 감소
-            applySpeed = walkSpeed * 2f;
 
         }
-        void runningCancel()
+        public void runningCancel()
         {
-            applySpeed = walkSpeed;
+            if (isRun)
+            {
+                isRun = false;
+                applySpeed = walkSpeed;
+                overview.aimingFOV -= FovAmmount;
+                overview.defaultFOV -= FovAmmount;
+            }
         }
 
     }

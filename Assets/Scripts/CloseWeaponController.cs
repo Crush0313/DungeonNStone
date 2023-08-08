@@ -33,7 +33,7 @@ public class CloseWeaponController : MonoBehaviour
             if (hitInfo.transform.tag == "Mob")
             {
                 //SoundManager.instance.PlaySE("Animal_Hit");
-                hitInfo.transform.GetComponent<Mob>().Damage(1);
+                hitInfo.transform.GetComponent<Mob>().GetDamage(1);
             }
         }
     }

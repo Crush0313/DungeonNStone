@@ -239,34 +239,8 @@ MonoBehaviour:
     itemAttributes:
     - attributeName: Health
       attributeValue: 10
-  - itemName: Empty Bottle
-    itemID: 13
-    itemDesc: You can fill some juice into the bottle.
-    itemIcon: {fileID: 21300000, guid: a9893eef89a9a0742b835e8296428609, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
-    itemValue: 1
-    itemType: 2
-    maxStack: 5
-    indexItemInList: 999
-    rarity: 13
-    itemAttributes: []
-  - itemName: Raw Meat
-    itemID: 14
-    itemDesc: 'You can create some nice cooked meat out of it.
-
-      + 5 Health'
-    itemIcon: {fileID: 21300000, guid: b29cbbd10ecf3fd40991d4734d556c17, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
-    itemValue: 1
-    itemType: 2
-    maxStack: 5
-    indexItemInList: 999
-    rarity: 35
-    itemAttributes:
-    - attributeName: Health
-      attributeValue: 5
   - itemName: Cooked Meat
-    itemID: 15
+    itemID: 13
     itemDesc: 'Very nice cooked meat.
 
       + 20 Health'
@@ -280,44 +254,8 @@ MonoBehaviour:
     itemAttributes:
     - attributeName: Health
       attributeValue: 20
-  - itemName: Bread
-    itemID: 16
-    itemDesc: 'Take some meat to it and you will get a nice hamburger.
-
-      + 10
-      Health'
-    itemIcon: {fileID: 21300000, guid: 0288dbaa9a46b7a4fa8f0b0b773b6024, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
-    itemValue: 1
-    itemType: 2
-    maxStack: 5
-    indexItemInList: 999
-    rarity: 30
-    itemAttributes:
-    - attributeName: Health
-      attributeValue: 10
-  - itemName: Hamburger
-    itemID: 17
-    itemDesc: 'This hamburger gives you health and mana back.
-
-      + 20 Health
-
-      +
-      20 Mana'
-    itemIcon: {fileID: 21300000, guid: bad82843ddb69514c9b6b8e381d175f3, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
-    itemValue: 1
-    itemType: 2
-    maxStack: 5
-    indexItemInList: 999
-    rarity: 30
-    itemAttributes:
-    - attributeName: Health
-      attributeValue: 20
-    - attributeName: Mana
-      attributeValue: 20
   - itemName: Applejuice
-    itemID: 18
+    itemID: 14
     itemDesc: 'This applejuice gives you alot of health back.
 
       + 50 Health'
@@ -332,7 +270,7 @@ MonoBehaviour:
     - attributeName: Health
       attributeValue: 50
   - itemName: Green Apple
-    itemID: 19
+    itemID: 15
     itemDesc: 'This is a green apple.
 
       + 10 Health'
@@ -347,7 +285,7 @@ MonoBehaviour:
     - attributeName: Health
       attributeValue: 10
   - itemName: Backpack
-    itemID: 20
+    itemID: 18
     itemDesc: 'This backpack is pretty big.
 
       30 Slots'
@@ -362,7 +300,7 @@ MonoBehaviour:
     - attributeName: Slots
       attributeValue: 30
   - itemName: Backpack2
-    itemID: 21
+    itemID: 19
     itemDesc: 'This is a nice backpack.
 
       36 Slots'
@@ -376,99 +314,11 @@ MonoBehaviour:
     itemAttributes:
     - attributeName: Slots
       attributeValue: 36
-  - itemName: Bullet
-    itemID: 22
-    itemDesc: 
-    itemIcon: {fileID: 21300000, guid: 5f0f88702fe3baa4793a297bced9d8c0, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
-    itemValue: 15
-    itemType: 17
-    maxStack: 999
-    indexItemInList: 999
-    rarity: 1
-    itemAttributes: []
-  - itemName: Pistol01
-    itemID: 23
-    itemDesc: 
-    itemIcon: {fileID: 21300000, guid: 435211a123255834d8dbd986692317b8, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
-    itemValue: 1
-    itemType: 16
-    maxStack: 1
-    indexItemInList: 999
-    rarity: 1
-    itemAttributes: []
-  - itemName: Machinegun
-    itemID: 24
-    itemDesc: 
-    itemIcon: {fileID: 21300000, guid: dd0061a2f7a74a04ebeb40c4b85e2557, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
-    itemValue: 1
-    itemType: 16
-    maxStack: 1
-    indexItemInList: 999
-    rarity: 1
-    itemAttributes: []
-  - itemName: Machinegun Bullet
-    itemID: 25
-    itemDesc: 
-    itemIcon: {fileID: 21300000, guid: 9cd40a53b397dab4e8815b43f4c04be4, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
-    itemValue: 50
-    itemType: 17
-    maxStack: 999
-    indexItemInList: 999
-    rarity: 1
-    itemAttributes: []
-  - itemName: Grenade
-    itemID: 26
-    itemDesc: 
-    itemIcon: {fileID: 21300000, guid: 61133c9d383f3764bb714ef99ae8dc37, type: 3}
-    itemModel: {fileID: 100000, guid: 4cb7c2a50f87abf459d60c25eedc60b7, type: 2}
-    itemValue: 1
-    itemType: 15
-    maxStack: 99
-    indexItemInList: 999
-    rarity: 1
-    itemAttributes: []
-  - itemName: Assault Rifle
-    itemID: 27
-    itemDesc: 
-    itemIcon: {fileID: 21300000, guid: dd0061a2f7a74a04ebeb40c4b85e2557, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
-    itemValue: 1
-    itemType: 16
-    maxStack: 1
-    indexItemInList: 999
-    rarity: 0
-    itemAttributes: []
-  - itemName: Shotgun
-    itemID: 28
-    itemDesc: 
-    itemIcon: {fileID: 21300000, guid: 7ca0a8f6c1c45884f8d3a9d234506a24, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
-    itemValue: 1
-    itemType: 16
-    maxStack: 1
-    indexItemInList: 999
-    rarity: 0
-    itemAttributes: []
-  - itemName: Shotgun Shell
-    itemID: 29
-    itemDesc: 
-    itemIcon: {fileID: 21300000, guid: 7f16cada731089d46a6d936d91bd8958, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
-    itemValue: 1
-    itemType: 17
-    maxStack: 999
-    indexItemInList: 999
-    rarity: 0
-    itemAttributes: []
   - itemName: Mace
-    itemID: 30
+    itemID: 19
     itemDesc: 
     itemIcon: {fileID: 21300000, guid: c7f2f74ac6819e747adc6222539aeac2, type: 3}
-    itemModel: {fileID: 2859819459032710050, guid: 54b4b62ef4d97aa48a5e1359c1b5eac0,
+    itemModel: {fileID: 2880722416909193061, guid: e749f0b26935ad54c951c44d1634efe8,
       type: 3}
     itemValue: 1
     itemType: 1
@@ -479,7 +329,7 @@ MonoBehaviour:
     - attributeName: Health
       attributeValue: 54
   - itemName: Small Backpack
-    itemID: 31
+    itemID: 19
     itemDesc: 6 Slots
     itemIcon: {fileID: 21300000, guid: a1fde3cbf081fbc4cbae9a28818c2a04, type: 3}
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
@@ -492,7 +342,7 @@ MonoBehaviour:
     - attributeName: Slots
       attributeValue: 6
   - itemName: Medium Backpack
-    itemID: 32
+    itemID: 20
     itemDesc: 12 Slots
     itemIcon: {fileID: 21300000, guid: a1fde3cbf081fbc4cbae9a28818c2a04, type: 3}
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
@@ -505,7 +355,7 @@ MonoBehaviour:
     - attributeName: Slots
       attributeValue: 12
   - itemName: Large Backpack
-    itemID: 33
+    itemID: 21
     itemDesc: 16 Slots
     itemIcon: {fileID: 21300000, guid: a1fde3cbf081fbc4cbae9a28818c2a04, type: 3}
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
@@ -518,7 +368,7 @@ MonoBehaviour:
     - attributeName: Slots
       attributeValue: 16
   - itemName: Military Backpack
-    itemID: 34
+    itemID: 22
     itemDesc: 20 Slots
     itemIcon: {fileID: 21300000, guid: a1fde3cbf081fbc4cbae9a28818c2a04, type: 3}
     itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
@@ -530,13 +380,90 @@ MonoBehaviour:
     itemAttributes:
     - attributeName: Slots
       attributeValue: 24
-  - itemName: Pistol01
-    itemID: 35
-    itemDesc: THIS IS A UFPS PISTOL
-    itemIcon: {fileID: 21300000, guid: 435211a123255834d8dbd986692317b8, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
+  - itemName: Dagger
+    itemID: 23
+    itemDesc: HP
+    itemIcon: {fileID: 21300000, guid: 00c0c1b99859f0645b00bb3790bd0328, type: 3}
+    itemModel: {fileID: 1409052685165714289, guid: 8f6868f9b21b5c84cb688efd529a8ff6,
+      type: 3}
     itemValue: 1
-    itemType: 16
+    itemType: 1
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes: []
+  - itemName: Hammer
+    itemID: 24
+    itemDesc: Hammer
+    itemIcon: {fileID: 21300000, guid: f736829f6a6ca374db0b45aa141e03b1, type: 3}
+    itemModel: {fileID: 7409414801357397200, guid: c385aca1e6bdd064fa955b85ac681f1e,
+      type: 3}
+    itemValue: 1
+    itemType: 1
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes:
+    - attributeName: Slots
+      attributeValue: 24
+  - itemName: Axe
+    itemID: 25
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 021c0c2cbeabf3941a5e36f86df4b94b, type: 3}
+    itemModel: {fileID: 786378297618524131, guid: a2a70304ae55c7c4e85e8c1e2074edea,
+      type: 3}
+    itemValue: 1
+    itemType: 1
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes: []
+  - itemName: Mace1
+    itemID: 26
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 00cbbcf25b1a8fb4ba3ba6934d9837cd, type: 3}
+    itemModel: {fileID: 180222374614795140, guid: ce5ff5dc9a79de342aabfe5181890557,
+      type: 3}
+    itemValue: 1
+    itemType: 1
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes: []
+  - itemName: Halberd
+    itemID: 27
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 1230c5a7c9644124f9ac11bc69548a7d, type: 3}
+    itemModel: {fileID: 5147758731865385664, guid: 948deb465caa2f941bb8cec62cdfec41,
+      type: 3}
+    itemValue: 1
+    itemType: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes:
+    - attributeName: Slots
+      attributeValue: 24
+  - itemName: Sword2
+    itemID: 28
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: 2d0baef73517eee41b2919b9fbfefa6a, type: 3}
+    itemModel: {fileID: 1804313022831884609, guid: abd35fe801e5ebd4ba97ebea11ccaa9a,
+      type: 3}
+    itemValue: 1
+    itemType: 1
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes: []
+  - itemName: WarAxe
+    itemID: 29
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: c3aa7fa60e1dd8f4f817c897049a1f5d, type: 3}
+    itemModel: {fileID: 6166942331229038356, guid: 5a15beac7e1d43543b1942b4e2b884b9,
+      type: 3}
+    itemValue: 1
+    itemType: 1
     maxStack: 1
     indexItemInList: 999
     rarity: 0

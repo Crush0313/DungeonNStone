@@ -63,6 +63,7 @@ public class Hotbar : MonoBehaviour
     private void Start()
     {
         inv = GetComponent<Inventory>();
+        SlotChanged(1);
     }
     void Update()
     {

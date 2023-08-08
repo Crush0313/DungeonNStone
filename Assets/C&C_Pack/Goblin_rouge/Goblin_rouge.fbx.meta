@@ -1,211 +1,575 @@
 fileFormatVersion: 2
 guid: 741f73214c8e59045b42ebac4be91444
-timeCreated: 1468254894
-licenseType: Store
 ModelImporter:
-  serializedVersion: 18
-  fileIDToRecycleName:
-    100000: Bottom_arm.L
-    100002: Bottom_arm.R
-    100004: Bottom_leg.L
-    100006: Bottom_leg.R
-    100008: Clavicle.L
-    100010: Clavicle.R
-    100012: Elbow_IK.L
-    100014: Elbow_IK.L_end
-    100016: Elbow_IK.R
-    100018: Elbow_IK.R_end
-    100020: finger1_1.L
-    100022: finger1_1.R
-    100024: finger1_2.L
-    100026: finger1_2.L_end
-    100028: finger1_2.R
-    100030: finger1_2.R_end
-    100032: finger2_1.L
-    100034: finger2_1.R
-    100036: finger2_2.L
-    100038: finger2_2.L_end
-    100040: finger2_2.R
-    100042: finger2_2.R_end
-    100044: Foot.L
-    100046: Foot.R
-    100048: Foot_ctrl.L
-    100050: Foot_ctrl.R
-    100052: Foot_IK.L
-    100054: Foot_IK.L_end
-    100056: Foot_IK.R
-    100058: Foot_IK.R_end
-    100060: FootRoll_crtl.L
-    100062: FootRoll_crtl.L_end
-    100064: FootRoll_crtl.R
-    100066: FootRoll_crtl.R_end
-    100068: gbln_war_eq.002
-    100070: Goblin_armature
-    100072: GOBLIN_BASE
-    100074: //RootNode
-    100076: Hand.L
-    100078: Hand.R
-    100080: Hand_IK.L
-    100082: Hand_IK.R
-    100084: Head
-    100086: Heel_roll.L
-    100088: Heel_roll.R
-    100090: Hips_ctrl
-    100092: jaw
-    100094: jaw_end
-    100096: Knee_IK.L
-    100098: Knee_IK.L_end
-    100100: Knee_IK.R
-    100102: Knee_IK.R_end
-    100104: Neck
-    100106: spine_1
-    100108: spine_2
-    100110: spine_3
-    100112: Thumb_1.L
-    100114: Thumb_1.R
-    100116: Thumb_2.L
-    100118: Thumb_2.L_end
-    100120: Thumb_2.R
-    100122: Thumb_2.R_end
-    100124: Toe.L
-    100126: Toe.L_end
-    100128: Toe.R
-    100130: Toe.R_end
-    100132: Toe_roll.L
-    100134: Toe_roll.R
-    100136: Upper_arm.L
-    100138: Upper_arm.R
-    100140: Upper_leg.L
-    100142: Upper_leg.R
-    100144: Vis_1
-    100146: Vis_1_end
-    100148: Weapon_bone.L
-    100150: Weapon_bone.L_end
-    100152: Weapon_bone.R
-    100154: Weapon_bone.R_end
-    400000: Bottom_arm.L
-    400002: Bottom_arm.R
-    400004: Bottom_leg.L
-    400006: Bottom_leg.R
-    400008: Clavicle.L
-    400010: Clavicle.R
-    400012: Elbow_IK.L
-    400014: Elbow_IK.L_end
-    400016: Elbow_IK.R
-    400018: Elbow_IK.R_end
-    400020: finger1_1.L
-    400022: finger1_1.R
-    400024: finger1_2.L
-    400026: finger1_2.L_end
-    400028: finger1_2.R
-    400030: finger1_2.R_end
-    400032: finger2_1.L
-    400034: finger2_1.R
-    400036: finger2_2.L
-    400038: finger2_2.L_end
-    400040: finger2_2.R
-    400042: finger2_2.R_end
-    400044: Foot.L
-    400046: Foot.R
-    400048: Foot_ctrl.L
-    400050: Foot_ctrl.R
-    400052: Foot_IK.L
-    400054: Foot_IK.L_end
-    400056: Foot_IK.R
-    400058: Foot_IK.R_end
-    400060: FootRoll_crtl.L
-    400062: FootRoll_crtl.L_end
-    400064: FootRoll_crtl.R
-    400066: FootRoll_crtl.R_end
-    400068: gbln_war_eq.002
-    400070: Goblin_armature
-    400072: GOBLIN_BASE
-    400074: //RootNode
-    400076: Hand.L
-    400078: Hand.R
-    400080: Hand_IK.L
-    400082: Hand_IK.R
-    400084: Head
-    400086: Heel_roll.L
-    400088: Heel_roll.R
-    400090: Hips_ctrl
-    400092: jaw
-    400094: jaw_end
-    400096: Knee_IK.L
-    400098: Knee_IK.L_end
-    400100: Knee_IK.R
-    400102: Knee_IK.R_end
-    400104: Neck
-    400106: spine_1
-    400108: spine_2
-    400110: spine_3
-    400112: Thumb_1.L
-    400114: Thumb_1.R
-    400116: Thumb_2.L
-    400118: Thumb_2.L_end
-    400120: Thumb_2.R
-    400122: Thumb_2.R_end
-    400124: Toe.L
-    400126: Toe.L_end
-    400128: Toe.R
-    400130: Toe.R_end
-    400132: Toe_roll.L
-    400134: Toe_roll.R
-    400136: Upper_arm.L
-    400138: Upper_arm.R
-    400140: Upper_leg.L
-    400142: Upper_leg.R
-    400144: Vis_1
-    400146: Vis_1_end
-    400148: Weapon_bone.L
-    400150: Weapon_bone.L_end
-    400152: Weapon_bone.R
-    400154: Weapon_bone.R_end
-    4300000: gbln_war_eq.002
-    4300002: GOBLIN_BASE
-    7400000: Goblin_armature|ArmatureAction
-    7400002: walk
-    7400004: run
-    7400006: idle
-    7400008: idle_battle
-    7400010: attack1
-    7400012: attack2
-    7400014: pow_attack
-    7400016: cast
-    7400018: def_start
-    7400020: def_end
-    7400022: hit1
-    7400024: hit2
-    7400026: death1
-    7400028: death2
-    7400030: jump_start
-    7400032: jump_end
-    9500000: //RootNode
-    13700000: gbln_war_eq.002
-    13700002: GOBLIN_BASE
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: Bottom_arm.L
+  - first:
+      1: 100002
+    second: Bottom_arm.R
+  - first:
+      1: 100004
+    second: Bottom_leg.L
+  - first:
+      1: 100006
+    second: Bottom_leg.R
+  - first:
+      1: 100008
+    second: Clavicle.L
+  - first:
+      1: 100010
+    second: Clavicle.R
+  - first:
+      1: 100012
+    second: Elbow_IK.L
+  - first:
+      1: 100014
+    second: Elbow_IK.L_end
+  - first:
+      1: 100016
+    second: Elbow_IK.R
+  - first:
+      1: 100018
+    second: Elbow_IK.R_end
+  - first:
+      1: 100020
+    second: finger1_1.L
+  - first:
+      1: 100022
+    second: finger1_1.R
+  - first:
+      1: 100024
+    second: finger1_2.L
+  - first:
+      1: 100026
+    second: finger1_2.L_end
+  - first:
+      1: 100028
+    second: finger1_2.R
+  - first:
+      1: 100030
+    second: finger1_2.R_end
+  - first:
+      1: 100032
+    second: finger2_1.L
+  - first:
+      1: 100034
+    second: finger2_1.R
+  - first:
+      1: 100036
+    second: finger2_2.L
+  - first:
+      1: 100038
+    second: finger2_2.L_end
+  - first:
+      1: 100040
+    second: finger2_2.R
+  - first:
+      1: 100042
+    second: finger2_2.R_end
+  - first:
+      1: 100044
+    second: Foot.L
+  - first:
+      1: 100046
+    second: Foot.R
+  - first:
+      1: 100048
+    second: Foot_ctrl.L
+  - first:
+      1: 100050
+    second: Foot_ctrl.R
+  - first:
+      1: 100052
+    second: Foot_IK.L
+  - first:
+      1: 100054
+    second: Foot_IK.L_end
+  - first:
+      1: 100056
+    second: Foot_IK.R
+  - first:
+      1: 100058
+    second: Foot_IK.R_end
+  - first:
+      1: 100060
+    second: FootRoll_crtl.L
+  - first:
+      1: 100062
+    second: FootRoll_crtl.L_end
+  - first:
+      1: 100064
+    second: FootRoll_crtl.R
+  - first:
+      1: 100066
+    second: FootRoll_crtl.R_end
+  - first:
+      1: 100068
+    second: gbln_war_eq.002
+  - first:
+      1: 100070
+    second: Goblin_armature
+  - first:
+      1: 100072
+    second: GOBLIN_BASE
+  - first:
+      1: 100074
+    second: //RootNode
+  - first:
+      1: 100076
+    second: Hand.L
+  - first:
+      1: 100078
+    second: Hand.R
+  - first:
+      1: 100080
+    second: Hand_IK.L
+  - first:
+      1: 100082
+    second: Hand_IK.R
+  - first:
+      1: 100084
+    second: Head
+  - first:
+      1: 100086
+    second: Heel_roll.L
+  - first:
+      1: 100088
+    second: Heel_roll.R
+  - first:
+      1: 100090
+    second: Hips_ctrl
+  - first:
+      1: 100092
+    second: jaw
+  - first:
+      1: 100094
+    second: jaw_end
+  - first:
+      1: 100096
+    second: Knee_IK.L
+  - first:
+      1: 100098
+    second: Knee_IK.L_end
+  - first:
+      1: 100100
+    second: Knee_IK.R
+  - first:
+      1: 100102
+    second: Knee_IK.R_end
+  - first:
+      1: 100104
+    second: Neck
+  - first:
+      1: 100106
+    second: spine_1
+  - first:
+      1: 100108
+    second: spine_2
+  - first:
+      1: 100110
+    second: spine_3
+  - first:
+      1: 100112
+    second: Thumb_1.L
+  - first:
+      1: 100114
+    second: Thumb_1.R
+  - first:
+      1: 100116
+    second: Thumb_2.L
+  - first:
+      1: 100118
+    second: Thumb_2.L_end
+  - first:
+      1: 100120
+    second: Thumb_2.R
+  - first:
+      1: 100122
+    second: Thumb_2.R_end
+  - first:
+      1: 100124
+    second: Toe.L
+  - first:
+      1: 100126
+    second: Toe.L_end
+  - first:
+      1: 100128
+    second: Toe.R
+  - first:
+      1: 100130
+    second: Toe.R_end
+  - first:
+      1: 100132
+    second: Toe_roll.L
+  - first:
+      1: 100134
+    second: Toe_roll.R
+  - first:
+      1: 100136
+    second: Upper_arm.L
+  - first:
+      1: 100138
+    second: Upper_arm.R
+  - first:
+      1: 100140
+    second: Upper_leg.L
+  - first:
+      1: 100142
+    second: Upper_leg.R
+  - first:
+      1: 100144
+    second: Vis_1
+  - first:
+      1: 100146
+    second: Vis_1_end
+  - first:
+      1: 100148
+    second: Weapon_bone.L
+  - first:
+      1: 100150
+    second: Weapon_bone.L_end
+  - first:
+      1: 100152
+    second: Weapon_bone.R
+  - first:
+      1: 100154
+    second: Weapon_bone.R_end
+  - first:
+      4: 400000
+    second: Bottom_arm.L
+  - first:
+      4: 400002
+    second: Bottom_arm.R
+  - first:
+      4: 400004
+    second: Bottom_leg.L
+  - first:
+      4: 400006
+    second: Bottom_leg.R
+  - first:
+      4: 400008
+    second: Clavicle.L
+  - first:
+      4: 400010
+    second: Clavicle.R
+  - first:
+      4: 400012
+    second: Elbow_IK.L
+  - first:
+      4: 400014
+    second: Elbow_IK.L_end
+  - first:
+      4: 400016
+    second: Elbow_IK.R
+  - first:
+      4: 400018
+    second: Elbow_IK.R_end
+  - first:
+      4: 400020
+    second: finger1_1.L
+  - first:
+      4: 400022
+    second: finger1_1.R
+  - first:
+      4: 400024
+    second: finger1_2.L
+  - first:
+      4: 400026
+    second: finger1_2.L_end
+  - first:
+      4: 400028
+    second: finger1_2.R
+  - first:
+      4: 400030
+    second: finger1_2.R_end
+  - first:
+      4: 400032
+    second: finger2_1.L
+  - first:
+      4: 400034
+    second: finger2_1.R
+  - first:
+      4: 400036
+    second: finger2_2.L
+  - first:
+      4: 400038
+    second: finger2_2.L_end
+  - first:
+      4: 400040
+    second: finger2_2.R
+  - first:
+      4: 400042
+    second: finger2_2.R_end
+  - first:
+      4: 400044
+    second: Foot.L
+  - first:
+      4: 400046
+    second: Foot.R
+  - first:
+      4: 400048
+    second: Foot_ctrl.L
+  - first:
+      4: 400050
+    second: Foot_ctrl.R
+  - first:
+      4: 400052
+    second: Foot_IK.L
+  - first:
+      4: 400054
+    second: Foot_IK.L_end
+  - first:
+      4: 400056
+    second: Foot_IK.R
+  - first:
+      4: 400058
+    second: Foot_IK.R_end
+  - first:
+      4: 400060
+    second: FootRoll_crtl.L
+  - first:
+      4: 400062
+    second: FootRoll_crtl.L_end
+  - first:
+      4: 400064
+    second: FootRoll_crtl.R
+  - first:
+      4: 400066
+    second: FootRoll_crtl.R_end
+  - first:
+      4: 400068
+    second: gbln_war_eq.002
+  - first:
+      4: 400070
+    second: Goblin_armature
+  - first:
+      4: 400072
+    second: GOBLIN_BASE
+  - first:
+      4: 400074
+    second: //RootNode
+  - first:
+      4: 400076
+    second: Hand.L
+  - first:
+      4: 400078
+    second: Hand.R
+  - first:
+      4: 400080
+    second: Hand_IK.L
+  - first:
+      4: 400082
+    second: Hand_IK.R
+  - first:
+      4: 400084
+    second: Head
+  - first:
+      4: 400086
+    second: Heel_roll.L
+  - first:
+      4: 400088
+    second: Heel_roll.R
+  - first:
+      4: 400090
+    second: Hips_ctrl
+  - first:
+      4: 400092
+    second: jaw
+  - first:
+      4: 400094
+    second: jaw_end
+  - first:
+      4: 400096
+    second: Knee_IK.L
+  - first:
+      4: 400098
+    second: Knee_IK.L_end
+  - first:
+      4: 400100
+    second: Knee_IK.R
+  - first:
+      4: 400102
+    second: Knee_IK.R_end
+  - first:
+      4: 400104
+    second: Neck
+  - first:
+      4: 400106
+    second: spine_1
+  - first:
+      4: 400108
+    second: spine_2
+  - first:
+      4: 400110
+    second: spine_3
+  - first:
+      4: 400112
+    second: Thumb_1.L
+  - first:
+      4: 400114
+    second: Thumb_1.R
+  - first:
+      4: 400116
+    second: Thumb_2.L
+  - first:
+      4: 400118
+    second: Thumb_2.L_end
+  - first:
+      4: 400120
+    second: Thumb_2.R
+  - first:
+      4: 400122
+    second: Thumb_2.R_end
+  - first:
+      4: 400124
+    second: Toe.L
+  - first:
+      4: 400126
+    second: Toe.L_end
+  - first:
+      4: 400128
+    second: Toe.R
+  - first:
+      4: 400130
+    second: Toe.R_end
+  - first:
+      4: 400132
+    second: Toe_roll.L
+  - first:
+      4: 400134
+    second: Toe_roll.R
+  - first:
+      4: 400136
+    second: Upper_arm.L
+  - first:
+      4: 400138
+    second: Upper_arm.R
+  - first:
+      4: 400140
+    second: Upper_leg.L
+  - first:
+      4: 400142
+    second: Upper_leg.R
+  - first:
+      4: 400144
+    second: Vis_1
+  - first:
+      4: 400146
+    second: Vis_1_end
+  - first:
+      4: 400148
+    second: Weapon_bone.L
+  - first:
+      4: 400150
+    second: Weapon_bone.L_end
+  - first:
+      4: 400152
+    second: Weapon_bone.R
+  - first:
+      4: 400154
+    second: Weapon_bone.R_end
+  - first:
+      43: 4300000
+    second: gbln_war_eq.002
+  - first:
+      43: 4300002
+    second: GOBLIN_BASE
+  - first:
+      74: 7400000
+    second: Goblin_armature|ArmatureAction
+  - first:
+      74: 7400002
+    second: walk
+  - first:
+      74: 7400004
+    second: run
+  - first:
+      74: 7400006
+    second: idle
+  - first:
+      74: 7400008
+    second: idle_battle
+  - first:
+      74: 7400010
+    second: attack1
+  - first:
+      74: 7400012
+    second: attack2
+  - first:
+      74: 7400014
+    second: pow_attack
+  - first:
+      74: 7400016
+    second: cast
+  - first:
+      74: 7400018
+    second: def_start
+  - first:
+      74: 7400020
+    second: def_end
+  - first:
+      74: 7400022
+    second: hit1
+  - first:
+      74: 7400024
+    second: hit2
+  - first:
+      74: 7400026
+    second: death1
+  - first:
+      74: 7400028
+    second: death2
+  - first:
+      74: 7400030
+    second: jump_start
+  - first:
+      74: 7400032
+    second: jump_end
+  - first:
+      95: 9500000
+    second: //RootNode
+  - first:
+      137: 13700000
+    second: gbln_war_eq.002
+  - first:
+      137: 13700002
+    second: GOBLIN_BASE
+  externalObjects: {}
   materials:
-    importMaterials: 1
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
-    animationRotationError: .5
-    animationPositionError: .5
-    animationScaleError: .5
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Goblin_armature|ArmatureAction
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 0
       lastFrame: 393
       wrapMode: 0
@@ -213,6 +577,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -385,9 +750,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: walk
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 2
       lastFrame: 30
       wrapMode: 0
@@ -395,6 +762,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
@@ -567,9 +935,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: run
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 33
       lastFrame: 49
       wrapMode: 0
@@ -577,6 +947,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
@@ -749,9 +1120,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: idle
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 52
       lastFrame: 102
       wrapMode: 0
@@ -759,6 +1132,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
@@ -931,9 +1305,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: idle_battle
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 110
       lastFrame: 136
       wrapMode: 0
@@ -941,6 +1317,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
@@ -1113,9 +1490,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: attack1
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 140
       lastFrame: 161
       wrapMode: 0
@@ -1123,6 +1502,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -1135,7 +1515,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.44129553
+        functionName: GiveDamage
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -1295,9 +1682,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: attack2
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 161
       lastFrame: 179
       wrapMode: 0
@@ -1305,6 +1694,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -1477,9 +1867,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: pow_attack
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 179
       lastFrame: 207
       wrapMode: 0
@@ -1487,6 +1879,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -1659,9 +2052,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: cast
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 207
       lastFrame: 235
       wrapMode: 0
@@ -1669,6 +2064,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -1841,9 +2237,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: def_start
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 235
       lastFrame: 260
       wrapMode: 0
@@ -1851,6 +2249,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -2023,9 +2422,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: def_end
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 260
       lastFrame: 270
       wrapMode: 0
@@ -2033,6 +2434,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -2205,9 +2607,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: hit1
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 270
       lastFrame: 285
       wrapMode: 0
@@ -2215,6 +2619,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -2387,9 +2792,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: hit2
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 285
       lastFrame: 300
       wrapMode: 0
@@ -2397,6 +2804,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -2569,9 +2977,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: death1
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 305
       lastFrame: 330
       wrapMode: 0
@@ -2579,6 +2989,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -2591,7 +3002,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.91902834
+        functionName: DestroySelf
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -2751,9 +3169,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: death2
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 335
       lastFrame: 355
       wrapMode: 0
@@ -2761,6 +3181,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -2773,7 +3194,15 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.9926472
+        functionName: DestroySelf
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 2a5d525001bfeed47b85df238f2d2e0a,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -2933,9 +3362,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: jump_start
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 360
       lastFrame: 377
       wrapMode: 0
@@ -2943,6 +3374,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -3115,9 +3547,11 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     - serializedVersion: 16
       name: jump_end
       takeName: Goblin_armature|ArmatureAction
+      internalID: 0
       firstFrame: 377
       lastFrame: 393
       wrapMode: 0
@@ -3125,6 +3559,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -3297,44 +3732,75 @@ ModelImporter:
         weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 0
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
-    splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 1
+    tangentImportMode: 4
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
   importAnimation: 1
-  copyAvatar: 0
   humanDescription:
+    serializedVersion: 3
     human: []
     skeleton: []
-    armTwist: .5
-    foreArmTwist: .5
-    upperLegTwist: .5
-    legTwist: .5
-    armStretch: .0500000007
-    legStretch: .0500000007
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
     feetSpacing: 0
+    globalScale: 1
     rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
