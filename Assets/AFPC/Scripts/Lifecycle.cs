@@ -5,7 +5,7 @@ using UnityEngine.Events;
 namespace AFPC {
 
     /// <summary>
-    /// This class contain currentHp-damage-death cycle.
+    /// This class contain currentHp-Damage-death cycle.
     /// </summary>
     [System.Serializable]
     public class Lifecycle {
@@ -35,7 +35,7 @@ namespace AFPC {
 
 
         UnityAction healAction;
-        UnityAction damageAction;
+        UnityAction DamageAction;
         UnityAction deathAction;
 
         /// Set maximum currentHp and Mp in the start.
@@ -126,10 +126,10 @@ namespace AFPC {
         }
 
         //액션
-        /// Perform an action when the character was damaged.
+        /// Perform an action when the character was Damaged.
         public void AssignDamageAction(UnityAction action)
         {
-            damageAction = action;
+            DamageAction = action;
         }
         /// Perform an action when the character was healed.
         public void AssignHealAction(UnityAction action)
@@ -184,7 +184,7 @@ namespace AFPC {
 
         }
 
-        /// Damage the character. The Mp will be damaged first.
+        /// Damage the character. The Mp will be Damaged first.
         public virtual void Damage (float value) {
             if (!isAvailable) return;
 
@@ -195,7 +195,7 @@ namespace AFPC {
             if (Mathf.Abs(currentHp) < epsilon) {
                 Death ();
             }
-            damageAction?.Invoke();
+            DamageAction?.Invoke();
             if (isDebugLog) Debug.Log (ID + ": Damaged: " + value);
             hud.updateValue();
         }

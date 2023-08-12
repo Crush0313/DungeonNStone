@@ -30,6 +30,9 @@ public class Status : MonoBehaviour
 
     public HUD hud;
 
+    public int Dmg = 1;
+
+
     private void Start()
     {
         SetTargetExp();

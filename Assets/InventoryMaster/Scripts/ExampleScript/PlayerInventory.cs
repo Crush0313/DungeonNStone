@@ -6,7 +6,7 @@ public class PlayerInventory : MonoBehaviour
 {
     //메인 인벤토리
     public GameObject inventory;
-    private Inventory mainInventory;
+    public Inventory mainInventory;
 
     //장비 인벤토리
     public GameObject characterSystem;
@@ -18,21 +18,23 @@ public class PlayerInventory : MonoBehaviour
 
     public GameObject HPMANACanvas;
     Lifecycle lifecycle;
+    Status status;
 
     //float lifecycle.MaxHp = 100;
     //float lifecycle.MaxHp = 100;
-    float maxDamage = 0;
+    //float status.Dmg = 0;
     float maxArmor = 0;
 
     //public float lifecycle.currentHp = 60;
     //float lifecycle.currentHp = 100;
-    float currentDamage = 0;
+    //float currentstatus.Dmg = 0;
     float currentArmor = 0;
 
     int normalSize = 3;
 
     void Start()
     {
+        status = GetComponent<Status>();
         lifecycle = GetComponent<Player>().lifecycle;
         lifecycle.hud.updateValue();
 
@@ -229,13 +231,14 @@ public class PlayerInventory : MonoBehaviour
                 else
                     currentArmor += item.itemAttributes[i].attributeValue;
             }
-            if (item.itemAttributes[i].attributeName == "Damage")
+            /*
+            if (item.itemAttributes[i].attributeName == "status.Dmg")
             {
-                if ((currentDamage + item.itemAttributes[i].attributeValue) > maxDamage)
-                    currentDamage = maxDamage;
+                if ((currentstatus.Dmg + item.itemAttributes[i].attributeValue) > status.Dmg)
+                    currentstatus.Dmg = status.Dmg;
                 else
-                    currentDamage += item.itemAttributes[i].attributeValue;
-            }
+                    currentstatus.Dmg += item.itemAttributes[i].attributeValue;
+            }*/
         }
         lifecycle.hud.updateValue();
     }
@@ -251,8 +254,8 @@ public class PlayerInventory : MonoBehaviour
                 lifecycle.MaxHp += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
                 maxArmor += item.itemAttributes[i].attributeValue;
-            if (item.itemAttributes[i].attributeName == "Damage")
-                maxDamage += item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "status.Dmg")
+                status.Dmg += item.itemAttributes[i].attributeValue;
         }
         lifecycle.hud.updateValue();
     }
@@ -268,8 +271,8 @@ public class PlayerInventory : MonoBehaviour
                 lifecycle.MaxHp -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
                 maxArmor -= item.itemAttributes[i].attributeValue;
-            if (item.itemAttributes[i].attributeName == "Damage")
-                maxDamage -= item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "status.Dmg")
+                status.Dmg -= item.itemAttributes[i].attributeValue;
         }
         lifecycle.hud.updateValue();
     }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /*public enum TypeOfItem { Gold, Wood, Stone, Tool, Potion, Weapon, Material }
-public enum TypeOfItemBuff { none, defenseUp, attackSpeedUp, healthUp, damageUp, elementUp, staminaUp, Healing, speedBoost, expUp }
+public enum TypeOfItemBuff { none, defenseUp, attackSpeedUp, healthUp, DamageUp, elementUp, staminaUp, Healing, speedBoost, expUp }
 
 [Serializable]
 public class ItemPickups {

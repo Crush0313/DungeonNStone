@@ -103,7 +103,6 @@ GameObject:
   - component: {fileID: 2012356230}
   - component: {fileID: 2012356234}
   - component: {fileID: 2012356237}
-  - component: {fileID: 2012356238}
   m_Layer: 9
   m_Name: Hero
   m_TagString: Player
@@ -238,6 +237,8 @@ MonoBehaviour:
     applySpeed: 0
     walkSpeed: 2.59
     _velocity: {x: 0, y: 0, z: 0}
+    isRun: 0
+    FovAmmount: 0
     referenceEndurance: 20
     jumpForce: 7.5
     isGeneratePhysicMaterial: 1
@@ -269,6 +270,7 @@ MonoBehaviour:
     randomVec: {x: 0, y: 0}
     camera: {fileID: 1026608449}
     rb: {fileID: 1807461413602009157}
+  closeWeaponController: {fileID: 0}
 --- !u!114 &2012356230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
+  mainInventory: {fileID: 0}
   characterSystem: {fileID: 0}
   HPMANACanvas: {fileID: 0}
 --- !u!114 &2012356234
@@ -314,8 +317,7 @@ MonoBehaviour:
   TargetExp: 0
   CurrentExp: 0
   hud: {fileID: 0}
-  prefabGO: {fileID: 0}
-  R_Hand: {fileID: 0}
+  Dmg: 0
 --- !u!114 &2012356237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,24 +330,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a76d92292f1f0d43b1e9e829410860a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2012356238
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1807461413602009159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93b61112d0f024443b7b2591d60a4ea0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDelayDmg: 1.14
-  attackDelayAll: 1.08
-  WeaponAnim: {fileID: 1893322718855653157}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &3273224508521453767
 GameObject:
   m_ObjectHideFlags: 0

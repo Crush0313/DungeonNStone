@@ -9,6 +9,7 @@ public class CloseWeaponController : MonoBehaviour
     public float attackDelayDmg;
     public float attackDelayAll;
 
+    public Status status;
     public Animator WeaponAnim;
     protected RaycastHit hitInfo;
     [SerializeField] protected LayerMask layerMask;
@@ -33,7 +34,7 @@ public class CloseWeaponController : MonoBehaviour
             if (hitInfo.transform.tag == "Mob")
             {
                 //SoundManager.instance.PlaySE("Animal_Hit");
-                hitInfo.transform.GetComponent<Mob>().GetDamage(1);
+                hitInfo.transform.GetComponent<Mob>().GetDamage(status.Dmg);
             }
         }
     }

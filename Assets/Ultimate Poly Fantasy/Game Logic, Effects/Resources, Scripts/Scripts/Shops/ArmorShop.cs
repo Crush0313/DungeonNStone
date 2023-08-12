@@ -5,7 +5,7 @@ namespace AquariusMax.UPF
 public enum ArmorUnit { Helm, Chest, Shoulders, Bracers, Gloves, Pants, Legs, Boots }
 public enum ArmorElement { None, Fire, Water, Air, Earth, Spirit, Holy, Dark, Poison }
 public enum ArmorClass {Light, Heavy, Medium }
-public enum ArmorBuff {none, defenseUp, speedUp, healthUp, damageUp, staminaUp }
+public enum ArmorBuff {none, defenseUp, speedUp, healthUp, DamageUp, staminaUp }
 
 [Serializable]
 public class Armor {

@@ -468,3 +468,25 @@ MonoBehaviour:
     indexItemInList: 999
     rarity: 0
     itemAttributes: []
+  - itemName: "\uB9C8\uC11D"
+    itemID: 30
+    itemDesc: "\uC0AC\uD0D5 \uC544\uB2D8"
+    itemIcon: {fileID: 21300000, guid: d5e953f198473c04e8ee8774cc721d8d, type: 3}
+    itemModel: {fileID: 0}
+    itemValue: 1
+    itemType: 0
+    maxStack: 999999
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes: []
+  - itemName: New Item
+    itemID: 31
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemModel: {fileID: 0}
+    itemValue: 1
+    itemType: 0
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes: []

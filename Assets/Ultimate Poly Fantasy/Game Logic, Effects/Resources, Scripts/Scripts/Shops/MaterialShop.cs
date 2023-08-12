@@ -4,7 +4,7 @@ namespace AquariusMax.UPF
 {
 public enum MaterialUnit { Sword, Axe, Dagger, Mace, Staff, Shield, Bow }
 //public enum WeaponElement { None, Fire, Water, Air, Earth, Spirit, Holy, Dark, Poison }
-//public enum WeaponBuff {none, defenseUp, attackSpeedUp, healthUp, damageUp, staminaUp }
+//public enum WeaponBuff {none, defenseUp, attackSpeedUp, healthUp, DamageUp, staminaUp }
 
 [Serializable]
 public class Materials {

@@ -1,9 +1,17 @@
 using AFPC;
+using AquariusMax.UPF;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
+
+[System.Serializable]
+public class DropItem
+{
+    public int Id;
+    public int Value;
+}
 
 public class Mob : MonoBehaviour
 {
@@ -14,6 +22,7 @@ public class Mob : MonoBehaviour
     NavMeshAgent nav; //기본적으로 리지드바디를 잠궈버림
     [SerializeField] protected Animator anim;
     [SerializeField] protected AudioSource theAudio;
+    Inventory inv;
 
     [SerializeField] protected AudioClip[] SE_Normal;
     [SerializeField] protected AudioClip SE_Hurt;
@@ -29,6 +38,10 @@ public class Mob : MonoBehaviour
     public float AtkCool = 4f;
     public float currentAtkCool = 0f;
 
+    public DropItem[] DropItemList; //10% 단위, 인스펙터에 보이려고 클래스로 만듦
+
+
+
     // 사망 여부
     private bool isDead = false;
 
@@ -41,19 +54,37 @@ public class Mob : MonoBehaviour
             Dead();
         }
         else
-            RandAnimTrigger("Hit01", "Hit02");
+            RandAnimTrigger("Hit1", "Hit2");
     }
 
     void Dead()
     {
         isDead = true;
-        RandAnimTrigger("Die01", "Die02");
+        RandAnimTrigger("Die1", "Die2");
     }
     //애니메이션 클립에서 호출, read only 애니메이션일 때에는 object에도 본 스크립트를 넣어줘야 함
     public void DestroySelf()
     {
         Debug.Log("주금");
+        ItemDrop();
         Destroy(gameObject);
+    }
+
+    public void ItemDrop()
+    {
+        Debug.Log("아템 드랍");
+        for (int i = 0; i < DropItemList.Length; i++)
+        {
+            GiveItem(DropItemList[i].Id, DropItemList[i].Value);
+        }
+
+        inv.updateItemList();
+        inv.stackableSettings();
+    }
+    public void GiveItem(int ID, int Chance)
+    {
+        if(Random.Range(1,11) <= Chance) //1234567 은 7보다 작거나 같음
+            inv.addItemToInventory(ID, 1);
     }
 
     //애니메이션 클립에서 호출
@@ -78,6 +109,7 @@ public class Mob : MonoBehaviour
     void Start()
     {
         playerTf = Player.PlayerTF;
+        inv = playerTf.GetComponent<PlayerInventory>().mainInventory;
         nav = GetComponent<NavMeshAgent>();
         nav.speed = walkSpeed;
 

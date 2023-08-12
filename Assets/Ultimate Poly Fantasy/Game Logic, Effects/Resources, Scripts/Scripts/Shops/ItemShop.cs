@@ -4,7 +4,7 @@ namespace AquariusMax.UPF
 {
 public enum ItemUnit { Sword, Axe, Dagger, Mace, Staff, Shield, Bow }
 public enum ItemEffect { None, Fire, Water, Air, Earth, Spirit, Holy, Dark, Poison }
-public enum ItemBuff {none, defenseUp, attackSpeedUp, healthUp, damageUp, staminaUp }
+public enum ItemBuff {none, defenseUp, attackSpeedUp, healthUp, DamageUp, staminaUp }
 
 [Serializable]
 public class Items {
