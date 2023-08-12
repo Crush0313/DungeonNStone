@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using AquariusMax.UPF;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -17,7 +18,8 @@ public class Hotbar : MonoBehaviour
     public GameObject prefabGO;
     public GameObject R_Hand;
 
-    public Inventory inv;
+    //ConsumeItem consumeItem;
+    public Inventory inv; //핫바 인벤
     Item currentItem;
 
     public int currentSlotNum;
@@ -63,7 +65,8 @@ public class Hotbar : MonoBehaviour
     private void Start()
     {
         inv = GetComponent<Inventory>();
-        SlotChanged(1);
+        //consumeItem = transform.parent.GetComponent<ConsumeItem>();
+        SlotChanged(1, true);
     }
     void Update()
     {
@@ -107,18 +110,18 @@ public class Hotbar : MonoBehaviour
         }
     }
 
-    void SlotChanged(int TargetSlotNum)
+    void SlotChanged(int TargetSlotNum, bool isIgnoreUse = false)
     {
         if(currentItem!=null)   
             inv.UnEquipItem1(currentItem);
 
         currentSlotNum = TargetSlotNum;
 
+        SetCurrnetItem();
         SetArrowPos();
         SetWeapon();
-        UseItem();
-
-        SetCurrnetItem();
+        if (!isIgnoreUse)
+            UseItem();
 
         if (currentItem != null)
             inv.EquiptItem(currentItem);
@@ -147,13 +150,14 @@ public class Hotbar : MonoBehaviour
         arrowTF.position = targetPos + new Vector3(0, addArrowPos, 0);
     }
 
+    //휠을 돌리거나, 숫자키를 눌러 핫바 슬롯에 작용했을 때
+    //슬롯에 무언가 있으면 발동
     //소비형이면 사용
     public void UseItem( )
     {
         if (transform.GetChild(1).GetChild(currentSlotNum).childCount != 0) //개수가 0이 아닌 이상
         {
-            ConsumeItem _consumeItem = transform.GetChild(1).GetChild(currentSlotNum).GetChild(0).GetComponent<ConsumeItem>();
-            _consumeItem.consumeIt();
+            ConsumeItem.instance.ItemUse(inv, currentItem, transform.GetChild(1).GetChild(currentSlotNum).GetChild(0));
         }
     }
 

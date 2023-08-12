@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemOnObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler                   //Saves the Item in the slot
+public class ItemOnObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler                  //Saves the Item in the slot
 {
     public Item item;                                       //Item 
     private Text text;                                      //text for the itemValue
@@ -24,7 +24,6 @@ public class ItemOnObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         text.text = "" + item.itemValue;                     //sets the itemValue         
         image.sprite = item.itemIcon;
-        GetComponent<ConsumeItem>().item = item;
     }
 
     public void OnPointerEnter(PointerEventData data)                               //if you hit a item in the slot
@@ -42,4 +41,21 @@ public class ItemOnObject : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             tooltip.deactivateTooltip();            //the tooltip getting deactivated
     }
 
+    //클릭 시 발동
+    public void OnPointerDown(PointerEventData data)
+    {
+        //장비창에서 클릭이면 무시
+        if (this.gameObject.transform.parent.parent.parent.GetComponent<EquipmentSystem>() == null)
+        {
+            //이렇게 가져오는 이유는, 메인/장비/핫바 모두 인벤토리를 가지고 있기 때문, 
+            Inventory inventory = transform.parent.parent.parent.GetComponent<Inventory>();
+
+            //클릭이 '우클릭'이었을 시
+            if (data.button == PointerEventData.InputButton.Right)
+            {
+                Debug.Log(item.itemName);
+                ConsumeItem.instance.ItemUse(inventory, item, transform);
+            }
+        }
+    }
 }
