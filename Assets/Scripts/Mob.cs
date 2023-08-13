@@ -2,6 +2,7 @@ using AFPC;
 using AquariusMax.UPF;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
@@ -15,7 +16,8 @@ public class DropItem
 
 public class Mob : MonoBehaviour
 {
-    [SerializeField] protected int hp;
+    public int MaxHp;
+    [SerializeField] public int hp;
     [SerializeField] protected float walkSpeed;
 
     Transform playerTf;
@@ -38,12 +40,13 @@ public class Mob : MonoBehaviour
     public float AtkCool = 4f;
     public float currentAtkCool = 0f;
 
+    public int DropXp;
     public DropItem[] DropItemList; //10% 단위, 인스펙터에 보이려고 클래스로 만듦
-
+   
 
 
     // 사망 여부
-    private bool isDead = false;
+    public bool isDead = false;
 
     public void GetDamage(int dmg)
     {
@@ -66,8 +69,16 @@ public class Mob : MonoBehaviour
     public void DestroySelf()
     {
         Debug.Log("주금");
+        ExpDrop();
         ItemDrop();
-        Destroy(gameObject);
+        //        Destroy(gameObject);
+        transform.parent.GetComponent<SpawnManager>().OrderRespawn();
+        gameObject.SetActive(false);
+    }
+
+    public  void ExpDrop()
+    {
+        playerTf.GetComponent<Status>().ExpSum(DropXp);
     }
 
     public void ItemDrop()
@@ -92,7 +103,7 @@ public class Mob : MonoBehaviour
     {
         Debug.Log("공격");
         if (playerTf != null)
-            playerTf.GetComponent<Lifecycle>().Damage(10);
+            playerTf.GetComponent<Player>().lifecycle.Damage(10);
     }
 
     void RandAnimTrigger(string _Tr1, string _Tr2)
@@ -105,6 +116,11 @@ public class Mob : MonoBehaviour
             anim.SetTrigger(_Tr2);    
     }
 
+    private void OnEnable()
+    {
+        transform.position = Vector3.zero;
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -112,6 +128,8 @@ public class Mob : MonoBehaviour
         inv = playerTf.GetComponent<PlayerInventory>().mainInventory;
         nav = GetComponent<NavMeshAgent>();
         nav.speed = walkSpeed;
+
+        hp = MaxHp;
 
         StartCoroutine(CheckState());
         StartCoroutine(CheckStateForAction());
@@ -255,7 +273,7 @@ public class Mob : MonoBehaviour
     }
     */
 
-
+    
 
 
 }

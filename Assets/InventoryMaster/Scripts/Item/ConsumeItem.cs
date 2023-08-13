@@ -8,7 +8,8 @@ using AquariusMax.UPF;
 public class ConsumeItem : MonoBehaviour
 {
     public static ConsumeItem instance;
-    
+
+    public Status status;
     private static Tooltip tooltip;
     public ItemType[] itemTypeOfSlot;
     public static EquipmentSystem eS;
@@ -38,7 +39,7 @@ public class ConsumeItem : MonoBehaviour
 
 
 
-    public void ItemUse(Inventory inventory, Item item, Transform TF)
+    public void ItemUse(Inventory inventory, Item item, Transform TF = null) //TF는 장비일 때만 필요
     {
         bool gearable = false;
 
@@ -131,6 +132,28 @@ public class ConsumeItem : MonoBehaviour
 
                     //아이템 사용하고, 개수 차감
                     inventory.ConsumeItem(item);
+                    item.itemValue--;
+
+                    //개수 0이 되면
+                    if (item.itemValue <= 0)
+                    {
+                        //툴팁 없지 않은 이상, 툴팁 비활성화
+                        if (tooltip != null)
+                            tooltip.deactivateTooltip();
+
+                        inventory.deleteItemFromInventory(item); //인벤토리에서 템 제거
+                        Destroy(TF.gameObject); //템 오브젝트 제거
+                    }
+                }
+                else if (item.itemType == ItemType.Essence)
+                {
+                    if (status.CurrentEss >= status.Lv)
+                        return; //정수 총량 초과
+                    //중복 불가
+
+
+                    //아이템 사용하고, 개수 차감
+                    inventory.EquiptItem(item);
                     item.itemValue--;
 
                     //개수 0이 되면

@@ -19,7 +19,8 @@ public enum ItemType        //all ItemTypes...you can add some
     Ring = 9, //반지
     Hands = 10, //팔찌
     */
-    Backpack = 8
+    Backpack = 8,
+    Essence = 9
 
 }
 

@@ -19,6 +19,7 @@ public class HUD : MonoBehaviour {
     public Image LvImg; //경험치 이미지
     public Text LvTxt; //레벨 텍스트
 
+    public Text StatTxt;
 
     public CanvasGroup canvasGroup_DamageFX; //피격 이미지(캔버스 그룹)
 
@@ -26,6 +27,7 @@ public class HUD : MonoBehaviour {
     void Awake () {
         updateMaxValue();
         //slider_Endurance.maxValue = player.movement.referenceEndurance;
+        //UpdateStatUI();
     }
 
     public void updateValue()
@@ -78,5 +80,10 @@ public class HUD : MonoBehaviour {
     public void SetLvText(string _Lv)
     {
         LvTxt.text = _Lv;
+    }
+
+    public void UpdateStatUI(string _SetTxt)
+    {
+        StatTxt.text = _SetTxt;
     }
 }

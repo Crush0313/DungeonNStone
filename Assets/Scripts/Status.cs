@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Status : MonoBehaviour
 {
+
     //À°Ã¼
     public int Strength; //±Ù·Â
     public int Agility;//¹ÎÃ¸¼º
@@ -28,16 +29,21 @@ public class Status : MonoBehaviour
     public int TargetExp;
     public int CurrentExp;
 
-    public HUD hud;
-
+    List<int> Essences = new List<int>();
+    public int CurrentEss = 0; //ÇöÀç Á¤¼ö °¹¼ö
     public int Dmg = 1;
 
+    public HUD hud;
 
     private void Start()
     {
         SetTargetExp();
+        StatUI();
     }
-
+    private void Update()
+    {
+        StatUI();
+    }
     public void SetTargetExp()
     {
         TargetExp = (int)(0.7f * (Lv * Lv + 10 * Lv) + 20);
@@ -56,4 +62,23 @@ public class Status : MonoBehaviour
         hud.SetExpFill((float)CurrentExp / TargetExp);
     }
 
+    public void AddEss(int _ItemID)
+    {
+        Essences.Add(_ItemID);
+    }
+    public void RemoveEss(int _ItemID)
+    {
+        Essences.Remove(_ItemID);
+    }
+    public bool ChkEss(int _ItemID)
+    {
+        if (Essences.Contains(_ItemID))
+            return true;
+        return false;
+    }
+    public void StatUI()
+    {
+        hud.UpdateStatUI("°æÇèÄ¡ : " + CurrentExp + "/" + TargetExp + "\n"
+            + "°ø°Ý·Â :" + Dmg);
+    }
 }

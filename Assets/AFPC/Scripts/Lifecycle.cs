@@ -185,16 +185,25 @@ namespace AFPC {
         }
 
         /// Damage the character. The Mp will be Damaged first.
-        public virtual void Damage (float value) {
+        public void Damage (float value) {
             if (!isAvailable) return;
-
+            /*
             float MpDamage = Mathf.Min (currentMp, value);
             float currentHpDamage = Mathf.Min(currentHp, value - MpDamage);
             currentMp -= MpDamage;
             currentHp -= currentHpDamage;
+
             if (Mathf.Abs(currentHp) < epsilon) {
                 Death ();
             }
+            */
+            currentHp -= value;
+
+            if (currentHp <= 0)
+            {
+                Death();
+            }
+
             DamageAction?.Invoke();
             if (isDebugLog) Debug.Log (ID + ": Damaged: " + value);
             hud.updateValue();

@@ -22,12 +22,12 @@ public class PlayerInventory : MonoBehaviour
 
     //float lifecycle.MaxHp = 100;
     //float lifecycle.MaxHp = 100;
-    //float status.Dmg = 0;
+    //float Damgage = 0;
     float maxArmor = 0;
 
     //public float lifecycle.currentHp = 60;
     //float lifecycle.currentHp = 100;
-    //float currentstatus.Dmg = 0;
+    //float currentDamgage = 0;
     float currentArmor = 0;
 
     int normalSize = 3;
@@ -232,12 +232,12 @@ public class PlayerInventory : MonoBehaviour
                     currentArmor += item.itemAttributes[i].attributeValue;
             }
             /*
-            if (item.itemAttributes[i].attributeName == "status.Dmg")
+            if (item.itemAttributes[i].attributeName == "Damgage")
             {
-                if ((currentstatus.Dmg + item.itemAttributes[i].attributeValue) > status.Dmg)
-                    currentstatus.Dmg = status.Dmg;
+                if ((currentDamgage + item.itemAttributes[i].attributeValue) > Damgage)
+                    currentDamgage = Damgage;
                 else
-                    currentstatus.Dmg += item.itemAttributes[i].attributeValue;
+                    currentDamgage += item.itemAttributes[i].attributeValue;
             }*/
         }
         lifecycle.hud.updateValue();
@@ -254,8 +254,34 @@ public class PlayerInventory : MonoBehaviour
                 lifecycle.MaxHp += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
                 maxArmor += item.itemAttributes[i].attributeValue;
-            if (item.itemAttributes[i].attributeName == "status.Dmg")
+            if (item.itemAttributes[i].attributeName == "Damgage")
                 status.Dmg += item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Strength")
+                status.Strength += item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Agility")
+                status.Agility += item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Flexibility")
+                status.Flexibility += item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "PhisicalResistance")
+                status.PhisicalResistance += item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "BoneStrength")
+                status.BoneStrength += item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Mentality")
+                status.Mentality += item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "SoulPower")
+                status.SoulPower += item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "MagicResistance")
+                status.MagicResistance += item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Luck")
+                status.Luck += item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Restoration")
+                status.Restoration += item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Adaptablity")
+                status.Adaptablity += item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Penetration")
+                status.Penetration += item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Sharpness")
+                status.Sharpness += item.itemAttributes[i].attributeValue;
         }
         lifecycle.hud.updateValue();
     }
@@ -271,8 +297,34 @@ public class PlayerInventory : MonoBehaviour
                 lifecycle.MaxHp -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
                 maxArmor -= item.itemAttributes[i].attributeValue;
-            if (item.itemAttributes[i].attributeName == "status.Dmg")
+            if (item.itemAttributes[i].attributeName == "Damgage")
                 status.Dmg -= item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Strength")
+                status.Strength -= item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Agility")
+                status.Agility -= item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Flexibility")
+                status.Flexibility -= item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "PhisicalResistance")
+                status.PhisicalResistance -= item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "BoneStrength")
+                status.BoneStrength -= item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Mentality")
+                status.Mentality -= item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "SoulPower")
+                status.SoulPower -= item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "MagicResistance")
+                status.MagicResistance -= item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Luck")
+                status.Luck -= item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Restoration")
+                status.Restoration -= item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Adaptablity")
+                status.Adaptablity -= item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Penetration")
+                status.Penetration -= item.itemAttributes[i].attributeValue;
+            if (item.itemAttributes[i].attributeName == "Sharpness")
+                status.Sharpness -= item.itemAttributes[i].attributeValue;
         }
         lifecycle.hud.updateValue();
     }

@@ -479,3 +479,16 @@ MonoBehaviour:
     indexItemInList: 999
     rarity: 0
     itemAttributes: []
+  - itemName: "\uACE0\uBE14\uB9B0 \uC815\uC218"
+    itemID: 31
+    itemDesc: 
+    itemIcon: {fileID: 21300000, guid: fadafbc7d8c2fd647a6bcc9080d02419, type: 3}
+    itemModel: {fileID: 0}
+    itemValue: 1
+    itemType: 9
+    maxStack: 1
+    indexItemInList: 999
+    rarity: 0
+    itemAttributes:
+    - attributeName: 
+      attributeValue: 0

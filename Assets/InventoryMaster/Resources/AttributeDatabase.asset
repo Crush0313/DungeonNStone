@@ -25,5 +25,31 @@ MonoBehaviour:
     attributeValue: 0
   - attributeName: Slots
     attributeValue: 0
-  - attributeName: 
+  - attributeName: MaxHealth
+    attributeValue: 0
+  - attributeName: Strength
+    attributeValue: 0
+  - attributeName: Agility
+    attributeValue: 0
+  - attributeName: Flexibility
+    attributeValue: 0
+  - attributeName: PhisicalResistance
+    attributeValue: 0
+  - attributeName: BoneStrength
+    attributeValue: 0
+  - attributeName: Mentality
+    attributeValue: 0
+  - attributeName: SoulPower
+    attributeValue: 0
+  - attributeName: MagicResistance
+    attributeValue: 0
+  - attributeName: Luck
+    attributeValue: 0
+  - attributeName: Restoration
+    attributeValue: 0
+  - attributeName: Adaptablity
+    attributeValue: 0
+  - attributeName: Penetration
+    attributeValue: 0
+  - attributeName: Sharpness
     attributeValue: 0
