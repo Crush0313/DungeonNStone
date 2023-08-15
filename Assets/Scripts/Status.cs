@@ -70,6 +70,7 @@ public class Status : MonoBehaviour
     {
         Essences.Remove(_ItemID);
     }
+    //이미 있으면 true 반환
     public bool ChkEss(int _ItemID)
     {
         if (Essences.Contains(_ItemID))

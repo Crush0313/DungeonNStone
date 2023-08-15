@@ -1,9 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System;
-using AquariusMax.UPF;
 
 public class ConsumeItem : MonoBehaviour
 {
@@ -147,11 +142,19 @@ public class ConsumeItem : MonoBehaviour
                 }
                 else if (item.itemType == ItemType.Essence)
                 {
+                    Debug.Log("정수 흡수");
                     if (status.CurrentEss >= status.Lv)
-                        return; //정수 총량 초과
-                    //중복 불가
+                    {
+                        Debug.Log("정수 용량 초과");
+                        return;
+                    }
+                    if (status.ChkEss(item.itemID))
+                    {
+                        Debug.Log("이미 있는 정수");
+                        return;
+                    }
 
-
+                    status.AddEss(item.itemID);
                     //아이템 사용하고, 개수 차감
                     inventory.EquiptItem(item);
                     item.itemValue--;

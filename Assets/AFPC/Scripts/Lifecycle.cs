@@ -208,6 +208,7 @@ namespace AFPC {
             DamageAction?.Invoke();
             if (isDebugLog) Debug.Log (ID + ": Damaged: " + value);
             hud.updateValue();
+            SoundManager.instance.PlaySE("Hit");
         }
 
 

@@ -43,8 +43,8 @@ public class Mob : MonoBehaviour
 
     public int DropXp;
     public DropItem[] DropItemList; //10% 단위, 인스펙터에 보이려고 클래스로 만듦
-   
 
+    public ParticleSystem BloodParticle;
 
     // 사망 여부
     public bool isDead = false;
@@ -56,9 +56,14 @@ public class Mob : MonoBehaviour
         if (hp <= 0)
         {
             Dead();
+            SoundManager.instance.PlaySE("Death");
         }
         else
+        {
             RandAnimTrigger("Hit1", "Hit2");
+            SoundManager.instance.PlaySE("MobHit");
+        }
+        BloodParticle.Play();
     }
 
     void Dead()
@@ -70,6 +75,7 @@ public class Mob : MonoBehaviour
     public void DestroySelf()
     {
         Debug.Log("주금");
+        SoundManager.instance.PlaySE("MobDeath");
         ExpDrop();
         ItemDrop();
         //        Destroy(gameObject);
@@ -103,6 +109,7 @@ public class Mob : MonoBehaviour
     public void GiveDamage()
     {
         Debug.Log("공격");
+        SoundManager.instance.PlaySE("Bite");
         if (playerTf != null)
             playerTf.GetComponent<Player>().lifecycle.Damage(Dmg);
     }
@@ -117,24 +124,31 @@ public class Mob : MonoBehaviour
             anim.SetTrigger(_Tr2);    
     }
 
-    private void OnEnable()
-    {
-        transform.position = Vector3.zero;
-    }
-
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         playerTf = Player.PlayerTF;
         inv = playerTf.GetComponent<PlayerInventory>().mainInventory;
+
         nav = GetComponent<NavMeshAgent>();
         nav.speed = walkSpeed;
 
+    }
+
+    private void OnEnable()
+    {
+        Debug.Log("에너블");
+        transform.localPosition = Vector3.zero;
+
+        curState = CurrentState.idle;
+
+        isDead = false;
         hp = MaxHp;
 
         StartCoroutine(CheckState());
         StartCoroutine(CheckStateForAction());
     }
+
 
     //거리에 따라 상태 전환
     IEnumerator CheckState()

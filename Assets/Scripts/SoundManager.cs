@@ -85,4 +85,19 @@ public class SoundManager : MonoBehaviour
         }
         Debug.Log("재생 중인" + _name + "사운드가 없습니다.");
     }
+
+    public void PlayBGM(string _name)
+    {
+        for (int i = 0; i < BGMsound.Length; i++) //사운드 라이브러리에서 해당 이름의 사운드 찾기
+        {
+            if (_name == BGMsound[i].name)
+            {
+                Debug.Log("찾았음" + i);
+                audioSourceBGM.clip = BGMsound[i].clip; //클립 넣기
+                audioSourceBGM.Play(); //재생
+                return; //함수 종료
+            }
+        }
+        Debug.Log(name + "사운드가 SoundManager에 등록되지 않았습니다."); //등록된 이름의 사운드가 아님
+    }
 }

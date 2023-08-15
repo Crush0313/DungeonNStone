@@ -19,9 +19,7 @@ public class SpawnManager : MonoBehaviour
     public void RespawnMob()
     {
         GO_Mob.SetActive(true);
-        _mob.curState = CurrentState.idle;
-        _mob.hp = _mob.MaxHp;
-        _mob.isDead = false;
+        //_mob.hp = _mob.MaxHp;
         //GO_Mob.transform.position = Vector3.zero;
     }
 }

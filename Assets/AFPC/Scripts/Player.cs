@@ -42,6 +42,8 @@ public class Player : MonoBehaviour {
 
         slider.maxValue = 10;
         slider.minValue = 0;
+
+
     }
 
     void Update () {

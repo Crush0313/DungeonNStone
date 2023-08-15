@@ -22,7 +22,7 @@ public class Hotbar : MonoBehaviour
     public Inventory inv; //핫바 인벤
     Item currentItem;
 
-    public int currentSlotNum;
+    public int currentSlotNum = 1;
 
 #if UNITY_EDITOR
     [MenuItem("Master System/Create/Hotbar")]        //creating the menu item
@@ -66,7 +66,8 @@ public class Hotbar : MonoBehaviour
     {
         inv = GetComponent<Inventory>();
         //consumeItem = transform.parent.GetComponent<ConsumeItem>();
-        SlotChanged(1, true);
+        //SlotChanged(1);
+        //SetArrowPos();
     }
     void Update()
     {
@@ -132,7 +133,6 @@ public class Hotbar : MonoBehaviour
         //기존 무기 오브젝트 파괴
         if (R_Hand.transform.childCount != 0)
             Destroy(R_Hand.transform.GetChild(0).gameObject);
-        Debug.Log("11");
 
         //새 무기 오브젝트 생성
         if (transform.GetChild(1).GetChild(currentSlotNum).childCount != 0)
@@ -148,6 +148,9 @@ public class Hotbar : MonoBehaviour
     {
         Vector3 targetPos = transform.GetChild(1).GetChild(currentSlotNum).transform.position;
         arrowTF.position = targetPos + new Vector3(0, addArrowPos, 0);
+
+        Debug.Log(targetPos);
+        Debug.Log(arrowTF.position);
     }
 
     //휠을 돌리거나, 숫자키를 눌러 핫바 슬롯에 작용했을 때

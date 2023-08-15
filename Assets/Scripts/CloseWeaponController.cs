@@ -6,8 +6,7 @@ using UnityEngine;
 public class CloseWeaponController : MonoBehaviour
 {
     protected bool isAttack = false;
-    public float attackDelayDmg;
-    public float attackDelayAll;
+    public float attackDelay;
 
     public Status status;
     public Animator WeaponAnim;
@@ -26,14 +25,15 @@ public class CloseWeaponController : MonoBehaviour
         }
     }
 
-    void Attack()
+    //애니메이션에서 호출
+    public void Attack()
     {
         if (chkObj())
         {
             Debug.Log(hitInfo.transform.name);
             if (hitInfo.transform.tag == "Mob")
             {
-                //SoundManager.instance.PlaySE("Animal_Hit");
+                //SoundManager.instance.PlaySE("Hit");
                 hitInfo.transform.GetComponent<Mob>().GetDamage(status.Dmg);
             }
         }
@@ -44,13 +44,8 @@ public class CloseWeaponController : MonoBehaviour
     {
         isAttack = true;
         WeaponAnim.SetTrigger("Atk");
-
-        yield return new WaitForSeconds(attackDelayDmg);
         SoundManager.instance.PlaySE("Atk_Sword");
-        Attack();
-        yield return new WaitForSeconds(attackDelayAll);
-
-        yield return new WaitForSeconds(attackDelayAll - attackDelayDmg);
+        yield return new WaitForSeconds(attackDelay);
         isAttack = false; //재공격 가능
     }
 
