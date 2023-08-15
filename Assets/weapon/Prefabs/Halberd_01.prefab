@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5116614876377953966}
   - component: {fileID: 5127345329616325814}
   - component: {fileID: 8195937319677453931}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Halberd_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}

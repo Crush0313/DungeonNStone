@@ -18,6 +18,7 @@ public class Mob : MonoBehaviour
 {
     public int MaxHp;
     [SerializeField] public int hp;
+    public int Dmg;
     [SerializeField] protected float walkSpeed;
 
     Transform playerTf;
@@ -103,7 +104,7 @@ public class Mob : MonoBehaviour
     {
         Debug.Log("АјАн");
         if (playerTf != null)
-            playerTf.GetComponent<Player>().lifecycle.Damage(10);
+            playerTf.GetComponent<Player>().lifecycle.Damage(Dmg);
     }
 
     void RandAnimTrigger(string _Tr1, string _Tr2)

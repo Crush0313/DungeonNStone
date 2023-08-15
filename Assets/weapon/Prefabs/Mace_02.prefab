@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2880722416909424995}
   - component: {fileID: 2880722416908212051}
   - component: {fileID: 2880722416907172055}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Mace_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

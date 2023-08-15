@@ -187,6 +187,7 @@ namespace AFPC {
         /// Damage the character. The Mp will be Damaged first.
         public void Damage (float value) {
             if (!isAvailable) return;
+            Debug.Log("공격당함");
             /*
             float MpDamage = Mathf.Min (currentMp, value);
             float currentHpDamage = Mathf.Min(currentHp, value - MpDamage);

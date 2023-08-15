@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using AFPC;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
@@ -14,7 +15,12 @@ public class Player : MonoBehaviour {
 
     public static Transform PlayerTF;
 
+    public GameObject SettingsUI;
+    public Slider slider;
+    public Text SensitiveText;
+
     public static bool isInv;
+    public bool isSetting = false;
 
     //클래스 초기화 대신 해주기. (네임스페이스에서 가져온거라 그런지 start 늘리기 싫은지, 각 start에서 해결하는 대신 여기서 함수 호출하는 방식)
     //액션에 내용추가
@@ -24,7 +30,7 @@ public class Player : MonoBehaviour {
 
         // a few apllication settings(for more smooth). This is Optional
         QualitySettings.vSyncCount = 0; //모니터 주파수에 맞게 렌더링 퍼포먼스 조절. 성능 측정시 끔. tearing 현상 방지
-        //Cursor.lockState = CursorLockMode.Locked; //중앙 좌표에 고정. 커서 비가시. <=> .None
+        Cursor.lockState = CursorLockMode.Locked; //중앙 좌표에 고정. 커서 비가시. <=> .None
 
         /* Initialize lifecycle, add Damage FX */
         lifecycle.Initialize();
@@ -33,6 +39,9 @@ public class Player : MonoBehaviour {
         /* Initialize movement, add camera shake when landing */
         movement.Initialize(overview);
         //movement.AssignLandingAction( ()=> overview.Shake(0.5f)); //인자가 있어서 화살표 함수로 넣음
+
+        slider.maxValue = 10;
+        slider.minValue = 0;
     }
 
     void Update () {
@@ -40,7 +49,7 @@ public class Player : MonoBehaviour {
 
         if (!lifecycle.Availability()) return; //죽었으면 함수 끝내버림
 
-        if (!isInv)
+        if (!isInv &&!isSetting)
         {
             overview.Looking();
             //overview.rigidInit(movement.rb);// Mouse look state 
@@ -57,6 +66,7 @@ public class Player : MonoBehaviour {
             movement.runningCancel();
         //체력, 방어력 회복
         lifecycle.Runtime();// Control the health, shield recovery 
+
     }
 
 
@@ -79,11 +89,34 @@ public class Player : MonoBehaviour {
 
         overview.lookingInputValues.x = Input.GetAxisRaw("Mouse X");
         overview.lookingInputValues.y = Input.GetAxisRaw("Mouse Y");
+
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isSetting = !isSetting;
+
+            SettingsUI.SetActive(isSetting);
+
+            if (isSetting)
+                Cursor.lockState = CursorLockMode.None;
+            else
+                Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        if (isSetting)
+            SensitiveValueChange();
     }
 
     void DamageFX () {
         if (HUD)
             HUD.DamageFX();
         overview.Shake(0.05f);
+    }
+
+
+    void SensitiveValueChange()
+    {
+        overview.sensitivity = slider.value;
+        SensitiveText.text = "감도 : " + slider.value;
     }
 }

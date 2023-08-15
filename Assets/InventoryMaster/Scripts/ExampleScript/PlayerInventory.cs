@@ -70,12 +70,14 @@ public class PlayerInventory : MonoBehaviour
             if (!inventory.activeSelf)
             {
                 mainInventory.openInventory();
+                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
                 if (toolTip != null)
                     toolTip.deactivateTooltip();
                 mainInventory.closeInventory();
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
     }
@@ -254,7 +256,7 @@ public class PlayerInventory : MonoBehaviour
                 lifecycle.MaxHp += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
                 maxArmor += item.itemAttributes[i].attributeValue;
-            if (item.itemAttributes[i].attributeName == "Damgage")
+            if (item.itemAttributes[i].attributeName == "Damage")
                 status.Dmg += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Strength")
                 status.Strength += item.itemAttributes[i].attributeValue;
@@ -282,6 +284,7 @@ public class PlayerInventory : MonoBehaviour
                 status.Penetration += item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Sharpness")
                 status.Sharpness += item.itemAttributes[i].attributeValue;
+
         }
         lifecycle.hud.updateValue();
     }
@@ -297,7 +300,7 @@ public class PlayerInventory : MonoBehaviour
                 lifecycle.MaxHp -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Armor")
                 maxArmor -= item.itemAttributes[i].attributeValue;
-            if (item.itemAttributes[i].attributeName == "Damgage")
+            if (item.itemAttributes[i].attributeName == "Damage")
                 status.Dmg -= item.itemAttributes[i].attributeValue;
             if (item.itemAttributes[i].attributeName == "Strength")
                 status.Strength -= item.itemAttributes[i].attributeValue;

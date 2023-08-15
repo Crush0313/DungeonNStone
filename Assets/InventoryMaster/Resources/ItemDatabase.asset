@@ -465,9 +465,11 @@ MonoBehaviour:
     itemValue: 1
     itemType: 1
     maxStack: 1
-    indexItemInList: 999
+    indexItemInList: 10
     rarity: 0
-    itemAttributes: []
+    itemAttributes:
+    - attributeName: Damage
+      attributeValue: 0
   - itemName: "\uB9C8\uC11D"
     itemID: 30
     itemDesc: "\uC0AC\uD0D5 \uC544\uB2D8"
